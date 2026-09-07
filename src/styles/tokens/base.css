@@ -1,0 +1,126 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  /* This site only ships a light theme. Without this, a browser running in
+     dark mode infers a dark scheme for native form-control chrome (the
+     text-input caret, autofill background, etc.) even though our own CSS
+     paints everything light — which is what made the input caret render
+     white-on-white and look like it vanished on hover/focus. */
+  color-scheme: light;
+}
+body {
+  margin: 0;
+  background: var(--surface-page);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-weight: var(--weight-body);
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+  text-wrap: pretty;
+}
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--text-heading);
+  margin: 0 0 var(--space-4);
+}
+h1 {
+  font-size: var(--type-h1);
+}
+h2 {
+  font-size: var(--type-h2);
+}
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-subhead);
+  font-weight: var(--weight-subhead);
+  line-height: 1.25;
+  color: var(--text-heading);
+  margin: 0 0 var(--space-3);
+}
+h3 {
+  font-size: var(--type-h3);
+}
+h4 {
+  font-size: var(--type-h4);
+}
+h5,
+h6 {
+  font-size: var(--type-ui);
+}
+p {
+  margin: 0 0 var(--space-4);
+}
+a {
+  color: var(--text-link);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover {
+  color: var(--text-link-hover);
+}
+:where(button, a, input, select, textarea):focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+.ds-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+.ds-eyebrow {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-bold);
+  font-size: var(--type-caption);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--purple);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 100;
+  background: var(--gold);
+  color: var(--purple);
+  font-weight: var(--weight-body-bold);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: top var(--duration) var(--ease);
+}
+.skip-link:focus {
+  top: var(--space-4);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

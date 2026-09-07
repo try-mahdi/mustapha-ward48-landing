@@ -1,0 +1,83 @@
+.countdown {
+  background: var(--gold);
+  padding: 48px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .countdown {
+    padding: 80px 48px;
+  }
+}
+
+.countdown__eyebrow {
+  font: var(--weight-body-bold) 14px/1.3 var(--font-body);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--purple);
+  margin: 0 0 var(--space-2);
+}
+
+.countdown__date {
+  margin: 0 0 32px;
+}
+
+.countdown__ring {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+@media (min-width: 1024px) {
+  .countdown__ring {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.countdown__ring-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.countdown__ring-track {
+  fill: none;
+  stroke: var(--gold-tint);
+  stroke-width: 8;
+}
+
+.countdown__ring-progress {
+  fill: none;
+  stroke: var(--purple);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 600ms var(--ease);
+}
+
+.countdown__ring-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown__days {
+  font: var(--weight-display) 56px/1 var(--font-display);
+  color: var(--purple);
+}
+@media (min-width: 1024px) {
+  .countdown__days {
+    font-size: 72px;
+  }
+}
+
+.countdown__unit {
+  font: var(--weight-subhead) 16px var(--font-subhead);
+  color: var(--purple);
+  margin-top: var(--space-1);
+}

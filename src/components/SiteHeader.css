@@ -1,0 +1,132 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: var(--purple);
+  border-bottom: var(--border-width) solid var(--purple-deep);
+  transform: translateY(-100%);
+  transition: transform 300ms var(--ease);
+}
+.site-header.is-revealed {
+  transform: translateY(0);
+}
+
+.site-header__bar {
+  min-height: 60px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+@media (min-width: 1024px) {
+  .site-header__bar {
+    min-height: 68px;
+    padding: 0 48px;
+  }
+}
+
+.site-header__brand {
+  display: inline-flex;
+}
+.site-header__logo {
+  height: 36px;
+  width: auto;
+}
+@media (min-width: 1024px) {
+  .site-header__logo {
+    height: 44px;
+  }
+}
+
+.site-header__toggle {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+}
+.site-header__toggle:hover {
+  background: var(--purple-deep);
+}
+@media (min-width: 1024px) {
+  .site-header__toggle {
+    display: none;
+  }
+}
+
+.site-header__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  flex-direction: column;
+  gap: var(--space-2);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--purple-deep);
+  padding: 8px 20px 20px;
+}
+.site-header__links.is-open {
+  display: flex;
+}
+@media (min-width: 1024px) {
+  .site-header__links {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    position: static;
+    background: transparent;
+    padding: 0;
+  }
+}
+
+.site-header__link {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font: var(--weight-body-bold) 16px/1 var(--font-body);
+  color: var(--cream);
+}
+.site-header__link:hover {
+  color: var(--gold-tint);
+}
+.site-header__link[aria-current='page'] {
+  color: var(--purple);
+  background: var(--gold);
+}
+.site-header__link[aria-current='page']:hover {
+  color: var(--purple);
+}
+.site-header__link.is-disabled {
+  color: var(--cream);
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+@media (min-width: 1024px) {
+  .site-header__link {
+    min-height: 44px;
+  }
+}
+
+.site-header__cta {
+  margin-top: var(--space-2);
+}
+@media (min-width: 1024px) {
+  .site-header__cta {
+    margin-top: 0;
+    margin-left: var(--space-2);
+  }
+}

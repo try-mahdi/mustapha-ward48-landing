@@ -1,0 +1,51 @@
+:root {
+  /* base palette */
+  --purple: #56175c;
+  --purple-deep: #3d0f42;
+  --purple-tint: #eadfea;
+  --gold: #dcb456;
+  --gold-deep: #c69c3c;
+  --gold-tint: #f6ebd2;
+  --cream: #f5ebdd;
+  --cream-deep: #ece0cd;
+  --ink: #282329;
+  --ink-60: #6b646d;
+  --ink-40: #9a949b;
+  --white: #ffffff;
+
+  /* semantic surfaces */
+  --surface-page: var(--cream);
+  --surface-card: var(--white);
+  --surface-raised: var(--cream-deep);
+  --surface-inverse: var(--purple);
+  --surface-accent: var(--gold);
+  --surface-accent-soft: var(--gold-tint);
+
+  /* semantic text */
+  --text-body: var(--ink);
+  --text-muted: var(--ink-60);
+  --text-heading: var(--purple);
+  --text-on-inverse: var(--cream);
+  --text-on-accent: var(--purple);
+  --text-link: var(--purple);
+  --text-link-hover: var(--purple-deep);
+
+  /* lines */
+  --border-strong: var(--purple);
+  --border-soft: var(--purple-tint);
+  --border-accent: var(--gold);
+
+  /* interaction */
+  --action-bg: var(--purple);
+  --action-bg-hover: var(--purple-deep);
+  --action-fg: var(--cream);
+  --action-accent-bg: var(--gold);
+  --action-accent-bg-hover: var(--gold-deep);
+  --action-accent-fg: var(--purple);
+  --focus-ring: var(--gold);
+
+  /* status — derived from the brand palette, no new hues invented */
+  --status-good: #3f6b3a;
+  --status-warn: var(--gold-deep);
+  --status-bad: #8c2f2a;
+}

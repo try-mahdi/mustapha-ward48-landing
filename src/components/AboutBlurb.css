@@ -1,0 +1,79 @@
+.about-blurb {
+  background: var(--cream);
+  padding: 48px 20px;
+}
+@media (min-width: 1024px) {
+  .about-blurb {
+    padding: 96px 48px;
+  }
+}
+
+.about-blurb__grid {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  gap: 32px;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 1024px) {
+  .about-blurb__grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+  }
+}
+
+.about-blurb__title {
+  margin: 0 0 var(--space-6);
+}
+
+.about-blurb__body {
+  max-width: 520px;
+  margin: 0 0 var(--space-6);
+}
+
+.about-blurb__link {
+  font: var(--weight-body-bold) 16px var(--font-body);
+  text-decoration-thickness: 2px;
+}
+
+.about-blurb__media {
+  aspect-ratio: 16 / 9;
+  background: var(--cream-deep);
+  border: var(--border-width) solid var(--purple);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 480px;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .about-blurb__media {
+    aspect-ratio: 1;
+  }
+}
+
+.about-blurb__play {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: grid;
+  place-items: center;
+  border: var(--border-width) solid var(--purple);
+}
+@media (min-width: 1024px) {
+  .about-blurb__play {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.about-blurb__media-caption {
+  position: absolute;
+  bottom: 16px;
+  font: 400 14px var(--font-body);
+  color: var(--ink-40);
+}

@@ -1,0 +1,18 @@
+:root {
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --radius-logo: 20px;
+
+  --border-width: 2px;
+  --border-card: var(--border-width) solid var(--border-strong);
+  --border-hairline: 1px solid var(--border-soft);
+
+  /* No shadow system. Depth comes from the 2px purple outline. */
+  --shadow-none: none;
+
+  --pattern-band-h: 120px;
+  --pattern-band-h-lg: 200px;
+  --pattern-icon: 40px;
+  --pattern-icon-lg: 64px;
+}

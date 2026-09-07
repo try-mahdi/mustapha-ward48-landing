@@ -1,0 +1,44 @@
+.icon-btn {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  border: var(--border-width) solid var(--purple);
+  transition: background var(--duration) var(--ease);
+}
+
+.icon-btn--primary {
+  background: var(--action-bg);
+  color: var(--cream);
+}
+.icon-btn--primary:hover {
+  background: var(--action-bg-hover);
+}
+
+.icon-btn--accent {
+  background: var(--gold);
+  color: var(--purple);
+}
+.icon-btn--accent:hover {
+  background: var(--gold-deep);
+}
+
+.icon-btn--secondary {
+  background: transparent;
+  color: var(--purple);
+}
+.icon-btn--secondary:hover {
+  background: var(--purple-tint);
+}
+
+.icon-btn--ghost {
+  background: transparent;
+  color: var(--purple);
+  border-color: transparent;
+}
+.icon-btn--ghost:hover {
+  background: var(--purple-tint);
+}

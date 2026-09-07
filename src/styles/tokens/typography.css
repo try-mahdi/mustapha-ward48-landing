@@ -1,0 +1,33 @@
+:root {
+  --font-display: "Montserrat Alternates Brand", "Montserrat Alternates", Georgia, serif;
+  --font-subhead: "Montserrat Brand", Montserrat, "Helvetica Neue", sans-serif;
+  --font-body: "Lato Brand", Lato, "Helvetica Neue", sans-serif;
+
+  --weight-display: 700;
+  --weight-subhead: 600;
+  --weight-body: 400;
+  --weight-body-bold: 700;
+
+  /* fixed scale from the brand notes */
+  --size-56: 56px;
+  --size-40: 40px;
+  --size-28: 28px;
+  --size-22: 22px;
+  --size-18: 18px;
+  --size-16: 16px;
+  --size-14: 14px;
+
+  /* responsive roles: mobile -> desktop */
+  --type-h1: clamp(36px, 7.2vw, 56px);
+  --type-h2: clamp(28px, 5vw, 40px);
+  --type-h3: clamp(22px, 3vw, 28px);
+  --type-h4: var(--size-22);
+  --type-body: clamp(16px, 1.4vw, 18px);
+  --type-ui: var(--size-16);
+  --type-caption: var(--size-14);
+
+  --leading-display: 1.15;
+  --leading-body: 1.6;
+  --tracking-display: -0.01em;
+  --tracking-label: 0.08em;
+}

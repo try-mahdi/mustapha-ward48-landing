@@ -1,0 +1,48 @@
+/*
+ * Google Fonts are loaded from index.html via <link rel="preconnect"> +
+ * <link rel="stylesheet"> so the browser can discover and fetch them as
+ * early as possible, instead of the extra round-trip a CSS @import costs.
+ *
+ * These @font-face rules alias the brand-specific names used in
+ * typography.css (e.g. "Lato Brand") to an installed system font, when one
+ * happens to be present, so the browser can skip a network round-trip.
+ * There's no remote src: the font stacks in typography.css already fall
+ * through to the plain family name ("Lato", "Montserrat", ...), which the
+ * Google Fonts stylesheet provides.
+ */
+@font-face {
+  font-family: "Montserrat Alternates Brand";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local("Montserrat Alternates Bold"),
+    local("MontserratAlternates-Bold");
+}
+@font-face {
+  font-family: "Montserrat Brand";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local("Montserrat SemiBold"),
+    local("Montserrat-SemiBold");
+}
+@font-face {
+  font-family: "Lato Brand";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local("Lato Regular"),
+    local("Lato-Regular");
+}
+@font-face {
+  font-family: "Lato Brand";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local("Lato Bold"),
+    local("Lato-Bold");
+}

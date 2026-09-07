@@ -1,0 +1,9 @@
+.action-section {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 1024px) {
+  .action-section {
+    grid-template-columns: 1fr 1.2fr;
+  }
+}

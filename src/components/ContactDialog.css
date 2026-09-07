@@ -1,0 +1,28 @@
+.contact-dialog__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.contact-dialog__grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 480px) {
+  .contact-dialog__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contact-dialog__error {
+  margin: 0;
+  font: var(--weight-body-bold) 14px/1.4 var(--font-body);
+  color: var(--status-bad);
+}
+
+.contact-dialog__status {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
