@@ -29,33 +29,3 @@
   border-color: var(--gold);
   background: var(--gold-tint);
 }
-
-.donate-dialog__custom {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  border: var(--border-width) solid var(--purple);
-  border-radius: var(--radius-md);
-  padding: 4px 12px;
-  background: var(--white);
-}
-.donate-dialog__custom.is-selected {
-  border-color: var(--gold);
-}
-
-.donate-dialog__currency {
-  font: var(--weight-body-bold) 18px var(--font-body);
-  color: var(--purple);
-}
-
-.donate-dialog__custom input {
-  flex: 1;
-  min-width: 0;
-  border: none;
-  outline: none;
-  background: transparent;
-  font: 400 18px var(--font-body);
-  color: var(--ink);
-  caret-color: var(--ink);
-  padding: 12px 0;
-}

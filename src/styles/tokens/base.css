@@ -14,7 +14,11 @@ html {
 }
 body {
   margin: 0;
-  background: var(--surface-page);
+  /* Every section paints its own full-bleed background, so this is never
+     visible in normal use — it only shows during mobile browsers' overscroll
+     bounce past the top/bottom edge. Matching the footer/hero purple instead
+     of the page's cream keeps that bounce from looking like a layout gap. */
+  background: var(--purple);
   color: var(--text-body);
   font-family: var(--font-body);
   font-weight: var(--weight-body);

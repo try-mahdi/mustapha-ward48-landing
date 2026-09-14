@@ -1,68 +1,51 @@
-import { useId, useState } from 'react';
+import { useState, useId } from 'react';
 import Modal from './Modal.jsx';
 import './DonateDialog.css';
 
-const PRESET_AMOUNTS = [20, 50, 100];
+const PRESET_AMOUNTS = [
+  { amount: 20, link: 'https://pay.yoco.com/r/yEEXnG' },
+  { amount: 50, link: 'https://pay.yoco.com/r/wDDdnk' },
+  { amount: 100, link: 'https://pay.yoco.com/r/b55PKO' },
+];
 
 function DonateForm({ onClose }) {
   const [amount, setAmount] = useState(null);
-  const [customValue, setCustomValue] = useState('');
-  const customInputId = useId();
 
-  const selectedValue = amount === 'custom' ? customValue : amount;
-  const donateLabel = selectedValue ? `Donate R${selectedValue}` : 'Select an amount';
-  const donateDisabled = !selectedValue;
+  const donateLabel = amount ? `Donate R${amount}` : 'Select an amount';
+  const donateDisabled = !amount;
+
+  const handleDonate = () => {
+    const selected = PRESET_AMOUNTS.find((preset) => preset.amount === amount);
+    if (!selected) return;
+    window.open(selected.link, '_blank', 'noopener,noreferrer');
+    onClose();
+  };
 
   return (
     <div className="donate-dialog__body">
-      <p className="modal__intro">Pick an amount or enter your own.</p>
+      <p className="modal__intro">Pick an amount to donate.</p>
 
       <div className="donate-dialog__presets" role="group" aria-label="Preset donation amounts">
         {PRESET_AMOUNTS.map((preset) => (
           <button
-            key={preset}
+            key={preset.amount}
             type="button"
-            className={`donate-dialog__preset ${amount === preset ? 'is-selected' : ''}`}
-            aria-pressed={amount === preset}
-            onClick={() => {
-              setAmount(preset);
-              setCustomValue('');
-            }}
+            className={`donate-dialog__preset ${amount === preset.amount ? 'is-selected' : ''}`}
+            aria-pressed={amount === preset.amount}
+            onClick={() => setAmount(preset.amount)}
           >
-            R{preset}
+            R{preset.amount}
           </button>
         ))}
       </div>
 
-      <div className={`donate-dialog__custom ${amount === 'custom' ? 'is-selected' : ''}`}>
-        <label htmlFor={customInputId} className="sr-only">
-          Other amount, in Rand
-        </label>
-        <span className="donate-dialog__currency" aria-hidden="true">
-          R
-        </span>
-        <input
-          id={customInputId}
-          type="number"
-          min="1"
-          inputMode="numeric"
-          placeholder="Other amount"
-          value={customValue}
-          onFocus={() => setAmount('custom')}
-          onChange={(event) => {
-            setAmount('custom');
-            setCustomValue(event.target.value);
-          }}
-        />
-      </div>
-
-      <p className="modal__note">You will be redirected to a secure payment page.</p>
+      <p className="modal__note">You will be redirected to Yoco's secure payment page.</p>
 
       <button
         type="button"
         className="modal__submit"
         disabled={donateDisabled}
-        onClick={onClose}
+        onClick={handleDonate}
       >
         {donateLabel}
       </button>

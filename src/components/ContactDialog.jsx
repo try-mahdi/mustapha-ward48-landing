@@ -33,7 +33,7 @@ function ContactForm({ onClose }) {
   if (status === 'success') {
     return (
       <div className="contact-dialog__status" role="status">
-        <p className="modal__intro">Thanks — the campaign will be in touch shortly.</p>
+        <p className="modal__intro">Thanks — the campaign will be in touch ASAP.</p>
         <button type="button" className="modal__submit" onClick={onClose}>
           Close
         </button>
@@ -60,6 +60,8 @@ function ContactForm({ onClose }) {
       />
 
       <Input label="Email address" name="email" type="email" autoComplete="email" required />
+
+      <Input label="Message" name="message" multiline rows={4} />
 
       {status === 'error' && (
         <p className="contact-dialog__error" role="alert">
