@@ -4,21 +4,21 @@ import './SiteFooter.css';
 
 const PAGES = [
   { key: 'home', href: '#home', label: 'Home' },
-  { key: 'record', label: 'The record', disabled: true },
-  { key: 'about', label: 'Meet Mustapha', disabled: true },
+  { key: 'record', label: 'The Plan', disabled: true },
+  { key: 'about', label: 'Meet Thaafir', disabled: true },
   { key: 'report', label: 'Report a problem', disabled: true },
 ];
 
 const CONTACT = [
-  { icon: 'phone', text: '071 966 1108' },
-  { icon: 'message-circle', text: 'WhatsApp 071 966 1108' },
+  // { icon: 'phone', text: '071 966 1108' },
+  // { icon: 'message-circle', text: 'WhatsApp 071 966 1108' },
   { icon: 'mail', text: 'admin@thaafirmustapha.com' },
 ];
 
 const SOCIAL = [
   {
     label: 'Instagram',
-    href: '#',
+    href: 'https://www.instagram.com/thaafirmustapha',
     path: (
       <>
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="var(--cream)" strokeWidth="2" />
@@ -29,7 +29,7 @@ const SOCIAL = [
   },
   {
     label: 'X',
-    href: '#',
+    href: 'https://x.com/thaafirmustapha',
     path: (
       <path
         fill="var(--cream)"
@@ -38,8 +38,8 @@ const SOCIAL = [
     ),
   },
   {
-    label: 'Spotify',
-    href: '#',
+    label: 'Tiktok',
+    href: 'https://www.tiktok.com/@thaafirmustapha',
     path: (
       <path
         fill="var(--cream)"
@@ -104,7 +104,13 @@ function SiteFooter() {
           <ul className="site-footer__social">
             {SOCIAL.map((item) => (
               <li key={item.label}>
-                <a href={item.href} className="site-footer__social-link" aria-label={item.label}>
+                <a
+                  href={item.href}
+                  className="site-footer__social-link"
+                  aria-label={item.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
                     {item.path}
                   </svg>
@@ -119,7 +125,7 @@ function SiteFooter() {
         Paid for by the Mustapha for Ward 48 campaign. Not funded by any political party.
       </p>
       <p className="site-footer__credit">
-        Site created by{' '}
+        developed by{' '}
         <a href="https://mahdidavids.com" target="_blank" rel="noopener noreferrer">
           mahdidavids.com
         </a>

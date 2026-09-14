@@ -3,7 +3,6 @@ import SiteHeader from './components/SiteHeader.jsx';
 import Hero from './components/Hero.jsx';
 import AboutBlurb from './components/AboutBlurb.jsx';
 import ActionSection from './components/ActionSection.jsx';
-import PatternBand from './components/PatternBand.jsx';
 import SiteFooter from './components/SiteFooter.jsx';
 import DonateDialog from './components/DonateDialog.jsx';
 import ContactDialog from './components/ContactDialog.jsx';
@@ -29,7 +28,6 @@ function App() {
           onDonateClick={() => setDonateOpen(true)}
           onContactClick={() => setContactOpen(true)}
         />
-        <PatternBand />
       </main>
 
       <SiteFooter />

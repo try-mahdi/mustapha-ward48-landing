@@ -1,4 +1,6 @@
 .about-blurb {
+  position: relative;
+  overflow: hidden;
   background: var(--cream);
   padding: 48px 20px;
 }
@@ -8,7 +10,41 @@
   }
 }
 
+.about-blurb__pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  gap: 24px;
+  padding: 20px;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .about-blurb__pattern {
+    gap: 40px;
+    padding: 40px;
+  }
+}
+
+.about-blurb__pattern-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  opacity: 0.15;
+}
+@media (min-width: 768px) {
+  .about-blurb__pattern-icon {
+    width: 72px;
+    height: 72px;
+  }
+}
+
 .about-blurb__grid {
+  position: relative;
+  z-index: 1;
   max-width: var(--container-max);
   margin: 0 auto;
   display: grid;
@@ -55,7 +91,17 @@
   }
 }
 
+.about-blurb__media-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
 .about-blurb__play {
+  position: relative;
   width: 64px;
   height: 64px;
   border-radius: 50%;
@@ -69,11 +115,4 @@
     width: 80px;
     height: 80px;
   }
-}
-
-.about-blurb__media-caption {
-  position: absolute;
-  bottom: 16px;
-  font: 400 14px var(--font-body);
-  color: var(--ink-40);
 }

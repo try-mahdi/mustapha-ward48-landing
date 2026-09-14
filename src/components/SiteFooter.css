@@ -5,6 +5,7 @@
   padding: 32px 20px 24px;
   margin-top: calc(-1 * var(--radius-lg));
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: 0 -6px 16px -4px var(--ink);
 }
 @media (min-width: 1024px) {
   .site-footer {
@@ -27,7 +28,7 @@
 }
 @media (min-width: 1024px) {
   .site-footer__grid {
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr max-content max-content max-content;
   }
 }
 
@@ -42,6 +43,7 @@
   color: var(--cream);
   opacity: 0.85;
   margin: 0;
+  max-width: 320px;
 }
 
 .site-footer__heading {

@@ -6,8 +6,8 @@ import './SiteHeader.css';
 
 const NAV_LINKS = [
   { key: 'home', href: '#home', label: 'Home', current: true },
-  { key: 'record', label: 'The record', disabled: true },
-  { key: 'about', label: 'Meet Mustapha', disabled: true },
+  { key: 'record', label: 'The Plan', disabled: true },
+  { key: 'about', label: 'Meet Thaafir', disabled: true },
   { key: 'report', label: 'Report a problem', disabled: true },
 ];
 

@@ -4,6 +4,16 @@ import './Hero.css';
 function Hero({ ref }) {
   return (
     <section ref={ref} className="hero" aria-label="Mustapha for Ward 48">
+      <video
+        className="hero__video"
+        src="/video/hero-bg.mp4"
+        poster="/video/hero-bg-poster.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      />
       <div className="hero__scrim" aria-hidden="true" />
       <div className="hero__content">
         <img
@@ -14,7 +24,6 @@ function Hero({ ref }) {
           height={196}
         />
       </div>
-      <p className="hero__caption">Auto-playing video background placeholder</p>
     </section>
   );
 }
