@@ -12,7 +12,7 @@ const PAGES = [
 const CONTACT = [
   { icon: 'phone', text: '071 966 1108' },
   { icon: 'message-circle', text: 'WhatsApp 071 966 1108' },
-  { icon: 'map-pin', text: 'thaafirm@gmail.com' },
+  { icon: 'mail', text: 'admin@thaafirmustapha.com' },
 ];
 
 const SOCIAL = [
@@ -88,7 +88,7 @@ function SiteFooter() {
         </div>
 
         <div>
-          <h3 className="site-footer__heading">Find us</h3>
+          <h3 className="site-footer__heading">Let's talk</h3>
           <ul className="site-footer__list site-footer__list--contact">
             {CONTACT.map((item) => (
               <li key={item.text} className="site-footer__contact-item">
