@@ -23,8 +23,8 @@ function SiteHeader({ heroRef, onContactClick }) {
           <img
             src={logoOnPurple}
             alt="Mustapha for Ward 48"
-            width={160}
-            height={112}
+            width={644}
+            height={162}
             className="site-header__logo"
           />
         </a>

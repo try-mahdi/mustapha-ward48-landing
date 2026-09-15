@@ -90,6 +90,19 @@
   align-items: center;
 }
 
+.site-footer__contact-link,
+.site-footer__contact-link:visited,
+.site-footer__contact-link:hover,
+.site-footer__contact-link:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-footer__contact-link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+}
+
 .site-footer__social {
   list-style: none;
   margin: 0;

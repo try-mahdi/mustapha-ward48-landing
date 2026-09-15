@@ -12,7 +12,7 @@ const PAGES = [
 const CONTACT = [
   // { icon: 'phone', text: '071 966 1108' },
   // { icon: 'message-circle', text: 'WhatsApp 071 966 1108' },
-  { icon: 'mail', text: 'admin@thaafirmustapha.com' },
+  { icon: 'mail', text: 'admin@thaafirmustapha.com', href: 'mailto:admin@thaafirmustapha.com' },
 ];
 
 const SOCIAL = [
@@ -58,11 +58,11 @@ function SiteFooter() {
             src={logoOnPurple}
             alt="Mustapha for Ward 48"
             className="site-footer__logo"
-            width={160}
-            height={112}
+            width={644}
+            height={162}
           />
           <p className="site-footer__blurb">
-            Home is Ward 48. So is the campaign.
+            An independent voice for Ward 48.
           </p>
         </div>
 
@@ -93,7 +93,13 @@ function SiteFooter() {
             {CONTACT.map((item) => (
               <li key={item.text} className="site-footer__contact-item">
                 <Icon name={item.icon} size={18} color="var(--gold)" />
-                {item.text}
+                {item.href ? (
+                  <a href={item.href} className="site-footer__contact-link">
+                    {item.text}
+                  </a>
+                ) : (
+                  item.text
+                )}
               </li>
             ))}
           </ul>
