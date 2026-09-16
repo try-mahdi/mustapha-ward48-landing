@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
 import logoOnPurple from '../assets/logo-on-purple.svg';
 import Icon from './Icon.jsx';
 import './SiteFooter.css';
 
 const PAGES = [
-  { key: 'home', href: '#home', label: 'Home' },
-  { key: 'record', label: 'The Plan', disabled: true },
+  { key: 'home', to: '/', label: 'Home' },
+  { key: 'plan', to: '/the-plan', label: 'The Plan' },
   { key: 'about', label: 'Meet Thaafir', disabled: true },
   { key: 'report', label: 'Report a problem', disabled: true },
 ];
@@ -78,9 +79,9 @@ function SiteFooter() {
                 </li>
               ) : (
                 <li key={page.key}>
-                  <a href={page.href} className="site-footer__link">
+                  <Link to={page.to} className="site-footer__link">
                     {page.label}
-                  </a>
+                  </Link>
                 </li>
               ),
             )}

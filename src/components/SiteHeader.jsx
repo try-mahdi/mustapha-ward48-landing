@@ -1,25 +1,28 @@
 import { useId, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import logoOnPurple from '../assets/logo-on-purple.svg';
 import Button from './Button.jsx';
 import { usePastElement } from '../hooks/usePastElement.js';
 import './SiteHeader.css';
 
 const NAV_LINKS = [
-  { key: 'home', href: '#home', label: 'Home', current: true },
-  { key: 'record', label: 'The Plan', disabled: true },
+  { key: 'home', to: '/', label: 'Home' },
+  { key: 'plan', to: '/the-plan', label: 'The Plan' },
   { key: 'about', label: 'Meet Thaafir', disabled: true },
   { key: 'report', label: 'Report a problem', disabled: true },
 ];
 
 function SiteHeader({ heroRef, onContactClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const pastHero = usePastElement(heroRef);
+  const location = useLocation();
+  const pastHero = usePastElement(heroRef, location.pathname);
+  const isRevealed = location.pathname !== '/' || pastHero;
   const menuId = useId();
 
   return (
-    <header className={`site-header ${pastHero ? 'is-revealed' : ''}`}>
+    <header className={`site-header ${isRevealed ? 'is-revealed' : ''}`}>
       <nav className="site-header__bar" aria-label="Primary">
-        <a href="#home" className="site-header__brand">
+        <Link to="/" className="site-header__brand">
           <img
             src={logoOnPurple}
             alt="Mustapha for Ward 48"
@@ -27,7 +30,7 @@ function SiteHeader({ heroRef, onContactClick }) {
             height={162}
             className="site-header__logo"
           />
-        </a>
+        </Link>
 
         <ul id={menuId} className={`site-header__links ${menuOpen ? 'is-open' : ''}`}>
           {NAV_LINKS.map((link) =>
@@ -39,14 +42,14 @@ function SiteHeader({ heroRef, onContactClick }) {
               </li>
             ) : (
               <li key={link.key}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.to}
                   className="site-header__link"
-                  aria-current={link.current ? 'page' : undefined}
+                  aria-current={location.pathname === link.to ? 'page' : undefined}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ),
           )}
