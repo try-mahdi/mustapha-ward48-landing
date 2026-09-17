@@ -70,14 +70,14 @@ function AboutBlurb() {
 
       <div className="about-blurb__grid">
         <div>
-          <p className="ds-eyebrow">About the campaign</p>
+          <p className="ds-eyebrow">We're fighting for</p>
           <h2 id="about-heading" className="about-blurb__title">
-            It shouldn&rsquo;t be this hard just to get by
+            SAFER STREETS,<br/>
+            STRONGER COMMUNITY,<br/>
+            ATHLONE FIRST
           </h2>
           <p className="about-blurb__body">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris.
+            Ward 48 stretches from Athlone CBD to Belgravia. From Kilpfontein to Pinati Estate. This area is tells the story of a rich cultural history. It’s our duty to make it better to live in!
           </p>
           <a href="#record" className="about-blurb__link">
             Read on

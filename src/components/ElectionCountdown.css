@@ -81,3 +81,51 @@
   color: var(--purple);
   margin-top: var(--space-1);
 }
+
+.countdown__tiles {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 420px;
+  margin-top: 20px;
+}
+@media (min-width: 1024px) {
+  .countdown__tiles {
+    gap: 12px;
+    margin-top: 28px;
+  }
+}
+
+.countdown__tile {
+  flex: 1;
+  min-width: 0;
+  background: var(--purple);
+  border-radius: 16px;
+  padding: 14px 8px;
+}
+@media (min-width: 1024px) {
+  .countdown__tile {
+    padding: 18px 12px;
+  }
+}
+
+.countdown__tile-value {
+  display: block;
+  font: var(--weight-display) 28px/1 var(--font-display);
+  color: var(--cream);
+  font-variant-numeric: tabular-nums;
+}
+@media (min-width: 1024px) {
+  .countdown__tile-value {
+    font-size: 36px;
+  }
+}
+
+.countdown__tile-label {
+  display: block;
+  font: var(--weight-body-bold) 11px/1 var(--font-body);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 6px;
+}

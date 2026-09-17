@@ -49,8 +49,8 @@ function buildHeroPattern(isMobile) {
 const THEMES = [
   {
     name: 'Safer Streets',
-    icon: iconPlasticChair,
-    iconOpen: iconPlasticChairOnPurple,
+    icon: iconKlopseHeadgear,
+    iconOpen: iconKlopseHeadgearOnPurple,
     points: [
       { head: 'CCTV', detail: 'More camera coverage across the ward.' },
       { head: 'Visible policing', detail: 'A stronger, visible police presence.' },
@@ -70,8 +70,8 @@ const THEMES = [
   },
   {
     name: 'Stronger Communities',
-    icon: iconKlopseHeadgear,
-    iconOpen: iconKlopseHeadgearOnPurple,
+    icon: iconPlasticChair,
+    iconOpen: iconPlasticChairOnPurple,
     points: [
       {
         head: 'Youth programmes',
@@ -186,12 +186,12 @@ function ThePlan({ onContactClick }) {
           ))}
         </div>
         <div className="the-plan__hero-content">
-          <p className="ds-eyebrow">The plan</p>
+          <p className="ds-eyebrow">—</p>
           <h1 id="the-plan-heading" className="the-plan__hero-title">
-            The things that matter
+            The Plan
           </h1>
           <p className="the-plan__hero-body">
-            Not a manifesto. Our priorities for Ward 48.
+            The things that matter
           </p>
         </div>
       </section>

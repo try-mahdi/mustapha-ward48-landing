@@ -20,8 +20,8 @@ function Hero({ ref }) {
           src={logoPrimary}
           alt="Mustapha for Ward 48"
           className="hero__logo"
-          width={280}
-          height={196}
+          width={400}
+          height={236}
         />
       </div>
     </section>

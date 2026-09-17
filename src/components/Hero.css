@@ -47,16 +47,16 @@
 }
 
 .hero__logo {
-  height: 120px;
+  height: 220px;
   width: auto;
 }
 @media (min-width: 768px) {
   .hero__logo {
-    height: 180px;
+    height: 320px;
   }
 }
 @media (min-width: 1024px) {
   .hero__logo {
-    height: 220px;
+    height: 400px;
   }
 }
