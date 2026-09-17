@@ -1,0 +1,6 @@
+project_id = "mustapha-ward48-landing"
+
+[functions.create-yoco-checkout]
+# Public endpoint triggered by an anonymous donor clicking "Donate" — no
+# Supabase-authenticated user is involved, so there's no JWT to verify.
+verify_jwt = false

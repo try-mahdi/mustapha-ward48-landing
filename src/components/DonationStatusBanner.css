@@ -1,0 +1,28 @@
+.donation-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  text-align: center;
+}
+
+.donation-banner__text {
+  margin: 0;
+  font: var(--weight-body-bold) var(--size-16) var(--font-body);
+}
+
+.donation-banner--success {
+  background: var(--gold-tint);
+  color: var(--status-good);
+}
+
+.donation-banner--cancelled {
+  background: var(--cream-deep);
+  color: var(--text-muted);
+}
+
+.donation-banner--failed {
+  background: var(--gold-tint);
+  color: var(--status-bad);
+}

@@ -1,16 +1,16 @@
-.donate-dialog__body {
+.donation__body {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
 }
 
-.donate-dialog__presets {
+.donation__presets {
   display: flex;
   gap: var(--space-3);
   flex-wrap: wrap;
 }
 
-.donate-dialog__preset {
+.donation__preset {
   flex: 1;
   min-width: 80px;
   padding: 16px;
@@ -22,10 +22,20 @@
   font: var(--weight-body-bold) 22px var(--font-subhead);
   color: var(--purple);
 }
-.donate-dialog__preset:hover {
+.donation__preset:hover {
   border-color: var(--gold);
 }
-.donate-dialog__preset.is-selected {
+.donation__preset.is-selected {
   border-color: var(--gold);
   background: var(--gold-tint);
+}
+.donation__preset:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.donation__error {
+  color: var(--status-bad);
+  font: var(--weight-body-bold) var(--size-14) var(--font-body);
+  margin: 0;
 }

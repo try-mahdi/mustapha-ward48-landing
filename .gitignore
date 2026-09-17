@@ -12,9 +12,16 @@ dist
 dist-ssr
 *.local
 
+# Supabase CLI local state — `supabase link` writes your project ref here,
+# and `supabase functions serve` would write local secrets to supabase/.env
+supabase/.temp
+supabase/.branches
+supabase/.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 .DS_Store
 *.suo
