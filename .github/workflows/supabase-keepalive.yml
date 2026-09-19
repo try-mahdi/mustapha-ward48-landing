@@ -1,0 +1,33 @@
+name: Keep Supabase project active
+
+# Supabase pauses Free-tier projects after ~7 days with no real database
+# activity, and does NOT auto-resume — it takes a manual "Resume project"
+# click in the dashboard. The donate button's Edge Function depends on this
+# project's Postgres (rate limiting), so a paused project silently breaks
+# donations until someone notices. This pings well inside that window, with
+# margin for a missed run.
+on:
+  schedule:
+    - cron: '0 6 */3 * *' # every 3 days at 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query a real table via the REST API
+        run: |
+          # The public/publishable key — safe to have in plain text here,
+          # it's the same key that would ship in any client-side bundle.
+          # RLS blocks it from returning real rows, which is fine: this
+          # only needs the query to round-trip successfully, not to read
+          # anything.
+          status=$(curl -s -o /tmp/response.json -w "%{http_code}" \
+            "https://udctctmrvdnqtnuxkxjq.supabase.co/rest/v1/donation_rate_limits?select=key&limit=1" \
+            -H "apikey: sb_publishable_JM7D-07dPuRXWe_wFONFhA_6_yv4TId")
+          echo "Response: $(cat /tmp/response.json)"
+          echo "HTTP status: $status"
+          if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then
+            echo "::error::Supabase keepalive ping failed with status $status"
+            exit 1
+          fi
