@@ -14,15 +14,14 @@
 .meet-thaafir__hero {
   position: relative;
   overflow: hidden;
-  /* Same fixed-header clearance as the-plan__hero (60px bar + 2px border on
-     mobile, 68px + 2px at the lg breakpoint), since the header is always
-     revealed on this page from first paint. */
+  /* #main-content's own padding-top already clears the fixed site header —
+     this is just the hero's own breathing room on top of that. */
   background: var(--cream);
-  padding: calc(62px + 40px) 20px 0;
+  padding: 40px 20px 0;
 }
 @media (min-width: 1024px) {
   .meet-thaafir__hero {
-    padding: calc(70px + 72px) 48px 0;
+    padding: 72px 48px 0;
   }
 }
 

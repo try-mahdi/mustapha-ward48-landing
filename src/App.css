@@ -1,3 +1,13 @@
 #main-content {
   display: block;
+  /* Single source of truth for clearing the fixed site header (60px bar +
+     2px border on mobile, 68px + 2px at the lg breakpoint) — every page's
+     hero, plus the donation status banner, lives inside here so none of
+     them need their own copy of this offset. */
+  padding-top: 62px;
+}
+@media (min-width: 1024px) {
+  #main-content {
+    padding-top: 70px;
+  }
 }

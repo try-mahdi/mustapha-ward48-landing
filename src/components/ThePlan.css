@@ -2,17 +2,14 @@
   position: relative;
   overflow: hidden;
   background: var(--purple);
-  /* Unlike the homepage hero, the site header is already revealed (fixed,
-     opaque) on this page from the very first paint, so the top padding
-     has to clear its height (60px bar + 2px border) on top of the hero's
-     own breathing room, or its content sits behind the bar. */
-  padding: calc(62px + 56px) 20px 48px;
+  /* #main-content's own padding-top already clears the fixed site header —
+     this is just the hero's own breathing room on top of that. */
+  padding: 56px 20px 48px;
   text-align: center;
 }
 @media (min-width: 1024px) {
   .the-plan__hero {
-    /* Header bar grows to 68px + 2px border at this breakpoint. */
-    padding: calc(70px + 88px) 48px 72px;
+    padding: 88px 48px 72px;
   }
 }
 

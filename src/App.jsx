@@ -54,11 +54,11 @@ function App() {
 
       <SiteHeader onContactClick={() => setContactOpen(true)} />
 
-      {donationStatus && (
-        <DonationStatusBanner status={donationStatus} onDismiss={() => setDonationStatus(null)} />
-      )}
-
       <main id="main-content">
+        {donationStatus && (
+          <DonationStatusBanner status={donationStatus} onDismiss={() => setDonationStatus(null)} />
+        )}
+
         <Routes>
           <Route
             path="/"
