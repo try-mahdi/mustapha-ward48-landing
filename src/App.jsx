@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import SiteHeader from './components/SiteHeader.jsx';
 import Hero from './components/Hero.jsx';
 import AboutBlurb from './components/AboutBlurb.jsx';
 import ActionSection from './components/ActionSection.jsx';
 import ThePlan from './components/ThePlan.jsx';
+import MeetThaafir from './components/MeetThaafir.jsx';
 import SiteFooter from './components/SiteFooter.jsx';
 import Donation from './components/donation/index.js';
 import ContactDialog from './components/ContactDialog.jsx';
@@ -12,7 +13,6 @@ import DonationStatusBanner from './components/DonationStatusBanner.jsx';
 import './App.css';
 
 function App() {
-  const heroRef = useRef(null);
   const [donateOpen, setDonateOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   // Yoco redirects back here with ?donation=success|cancelled|failed. Read
@@ -52,7 +52,7 @@ function App() {
         Skip to content
       </a>
 
-      <SiteHeader heroRef={heroRef} onContactClick={() => setContactOpen(true)} />
+      <SiteHeader onContactClick={() => setContactOpen(true)} />
 
       {donationStatus && (
         <DonationStatusBanner status={donationStatus} onDismiss={() => setDonationStatus(null)} />
@@ -64,7 +64,7 @@ function App() {
             path="/"
             element={
               <>
-                <Hero ref={heroRef} />
+                <Hero />
                 <AboutBlurb />
                 <ActionSection
                   onDonateClick={() => setDonateOpen(true)}
@@ -77,6 +77,7 @@ function App() {
             path="/the-plan"
             element={<ThePlan onContactClick={() => setContactOpen(true)} />}
           />
+          <Route path="/meet-thaafir" element={<MeetThaafir />} />
         </Routes>
       </main>
 

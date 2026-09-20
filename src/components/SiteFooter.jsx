@@ -6,7 +6,7 @@ import './SiteFooter.css';
 const PAGES = [
   { key: 'home', to: '/', label: 'Home' },
   { key: 'plan', to: '/the-plan', label: 'The Plan' },
-  { key: 'about', label: 'Meet Thaafir', disabled: true },
+  { key: 'about', to: '/meet-thaafir', label: 'Meet Thaafir' },
   { key: 'report', label: 'Report a problem', disabled: true },
 ];
 

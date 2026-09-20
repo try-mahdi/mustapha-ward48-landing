@@ -1,9 +1,9 @@
 import logoPrimary from '../assets/logo-primary.svg';
 import './Hero.css';
 
-function Hero({ ref }) {
+function Hero() {
   return (
-    <section ref={ref} className="hero" aria-label="Mustapha for Ward 48">
+    <section className="hero" aria-label="Mustapha for Ward 48">
       <video
         className="hero__video"
         src="/video/hero-bg.mp4"

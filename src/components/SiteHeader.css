@@ -6,11 +6,6 @@
   z-index: 40;
   background: var(--purple);
   border-bottom: var(--border-width) solid var(--purple-deep);
-  transform: translateY(-100%);
-  transition: transform 300ms var(--ease);
-}
-.site-header.is-revealed {
-  transform: translateY(0);
 }
 
 .site-header__bar {

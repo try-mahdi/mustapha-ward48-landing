@@ -7,10 +7,22 @@
   align-items: center;
   justify-content: center;
   min-height: 360px;
+  /* The site header is now fixed and visible from first paint here too.
+     margin (not padding) pushes the whole box — video included — below it:
+     padding wouldn't reach .hero__video since inset:0 on an absolutely
+     positioned child fills the padding box regardless of the padding
+     itself, ignoring it entirely. */
+  margin-top: 62px;
 }
 @media (min-width: 768px) {
   .hero {
     min-height: 520px;
+  }
+}
+@media (min-width: 1024px) {
+  .hero {
+    /* Header bar grows to 68px + 2px border at this breakpoint. */
+    margin-top: 70px;
   }
 }
 

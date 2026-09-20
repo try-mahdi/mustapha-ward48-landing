@@ -2,25 +2,22 @@ import { useId, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logoOnPurple from '../assets/logo-on-purple.svg';
 import Button from './Button.jsx';
-import { usePastElement } from '../hooks/usePastElement.js';
 import './SiteHeader.css';
 
 const NAV_LINKS = [
   { key: 'home', to: '/', label: 'Home' },
   { key: 'plan', to: '/the-plan', label: 'The Plan' },
-  { key: 'about', label: 'Meet Thaafir', disabled: true },
+  { key: 'about', to: '/meet-thaafir', label: 'Meet Thaafir' },
   { key: 'report', label: 'Report a problem', disabled: true },
 ];
 
-function SiteHeader({ heroRef, onContactClick }) {
+function SiteHeader({ onContactClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const pastHero = usePastElement(heroRef, location.pathname);
-  const isRevealed = location.pathname !== '/' || pastHero;
   const menuId = useId();
 
   return (
-    <header className={`site-header ${isRevealed ? 'is-revealed' : ''}`}>
+    <header className="site-header">
       <nav className="site-header__bar" aria-label="Primary">
         <Link to="/" className="site-header__brand">
           <img

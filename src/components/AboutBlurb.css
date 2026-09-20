@@ -10,38 +10,6 @@
   }
 }
 
-.about-blurb__pattern {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  display: grid;
-  gap: 24px;
-  padding: 20px;
-  align-content: center;
-  justify-items: center;
-  align-items: center;
-  pointer-events: none;
-}
-@media (min-width: 768px) {
-  .about-blurb__pattern {
-    gap: 40px;
-    padding: 40px;
-  }
-}
-
-.about-blurb__pattern-icon {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  opacity: 0.15;
-}
-@media (min-width: 768px) {
-  .about-blurb__pattern-icon {
-    width: 72px;
-    height: 72px;
-  }
-}
-
 .about-blurb__grid {
   position: relative;
   z-index: 1;
