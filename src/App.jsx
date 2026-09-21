@@ -77,7 +77,10 @@ function App() {
             path="/the-plan"
             element={<ThePlan onContactClick={() => setContactOpen(true)} />}
           />
-          <Route path="/meet-thaafir" element={<MeetThaafir />} />
+          <Route
+            path="/meet-thaafir"
+            element={<MeetThaafir onContactClick={() => setContactOpen(true)} />}
+          />
         </Routes>
       </main>
 

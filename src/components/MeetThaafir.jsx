@@ -1,42 +1,14 @@
-import bioPhoto from '../assets/about-headshot.jpg';
+import thaafirWorkshop from '../assets/thaafir-workshop.jpg';
+import thaafirHoodie from '../assets/thaafir-hoodie.jpg';
+import thaafirUctStudents from '../assets/thaafir-uct-students.jpg';
+import thaafirFamilyVintage from '../assets/thaafir-family-vintage.jpg';
+import thaafirFamilyGroup from '../assets/thaafir-family-group.jpg';
+import suitPhoto from '../assets/about-headshot.jpg';
 import IconPattern from './IconPattern.jsx';
+import Button from './Button.jsx';
 import './MeetThaafir.css';
 
-// TODO: swap in Thaafir's real facts, timeline milestones and quote once
-// they're finalised — everything below is placeholder copy mirroring the
-// approved design mock.
-const FACTS = [
-  { label: 'Age', value: '28' },
-  { label: 'Ward', value: '48' },
-  { label: 'Family', value: 'Lorem' },
-  { label: 'Work', value: 'Lorem' },
-];
-
-const TIMELINE = [
-  {
-    number: '98',
-    head: 'Lorem ipsum',
-    detail: 'Consectetur adipiscing elit sed do eiusmod',
-  },
-  {
-    number: '16',
-    head: 'Vivamus lacinia',
-    detail: 'Odio vitae vestibulum vestibulum cras',
-  },
-  {
-    number: '20',
-    head: 'Cras vehicula',
-    detail: 'Mi eget laoreet venenatis sem velit',
-  },
-  {
-    number: '26',
-    head: 'Running for Ward 48',
-    detail: 'This is where it starts',
-    highlight: true,
-  },
-];
-
-function MeetThaafir() {
+function MeetThaafir({ onContactClick }) {
   return (
     <>
       <section className="meet-thaafir__hero" aria-labelledby="meet-thaafir-heading">
@@ -54,65 +26,103 @@ function MeetThaafir() {
           </h1>
         </div>
 
-        <div className="meet-thaafir__intro">
-          <div className="meet-thaafir__photo">
-            <img src={bioPhoto} alt="Thaafir" />
+        <div className="meet-thaafir__collage">
+          <div className="meet-thaafir__collage-wide">
+            <img src={thaafirWorkshop} alt="Thaafir facilitating a SoWeVote youth workshop" />
           </div>
-          <div className="meet-thaafir__bio">
+          <div className="meet-thaafir__collage-row">
+            <img src={thaafirHoodie} alt="Thaafir smiling" />
+            <img
+              src={thaafirUctStudents}
+              alt="Thaafir talking with fellow students on the UCT campus"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="meet-thaafir__founder" aria-labelledby="meet-thaafir-founder-heading">
+        <div className="ds-container meet-thaafir__founder-inner">
+          <p className="ds-eyebrow">Thaafir doesn&rsquo;t just talk about changing politics!</p>
+          <h2 id="meet-thaafir-founder-heading">Non-profit founder &amp; law student</h2>
+
+          <div className="meet-thaafir__copy">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio
-              vitae vestibulum vestibulum. Cras vehicula, mi eget laoreet venenatis, sem velit
-              cursus arcu, a gravida nisi sapien eu massa.
+              In 2023, Thaafir started the non-profit <strong>SoWeVote</strong> to mobilise and
+              educate young people on politics and voter registration. The big idea was to
+              change the way that South Africans see politics and actually allow people to
+              understand what politicians are saying in order to make an informed decision on
+              Election Day and beyond — so he knows a thing or two about organisational
+              management, working with politicians, and what makes people frustrated in the
+              system.
             </p>
             <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae
-              elit libero, a pharetra augue. Donec ullamcorper nulla non metus auctor fringilla.
+              This work led to him being named{' '}
+              <strong>News24 Young Mandela of the Future</strong> (2024) in the category
+              &lsquo;Deepening democracy&rsquo; and{' '}
+              <strong>Mail &amp; Guardian Top 200 Young South African</strong> (2025) for
+              Politics &amp; Governance.
             </p>
             <p>
-              Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed
-              consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-              auctor. Maecenas sed diam eget risus varius blandit sit amet non magna.
+              He&rsquo;s also a <strong>Dean&rsquo;s Merit List</strong> law student at the
+              University of Cape Town, where he serves as a faculty mentor to new students and
+              educates communities on their rights through the UCT Law Clinic.
+            </p>
+          </div>
+        </div>
+
+        <hr className="meet-thaafir__divider" />
+
+        <div className="meet-thaafir__collage meet-thaafir__collage--roots">
+          <img
+            className="meet-thaafir__collage-roots-vintage"
+            src={thaafirFamilyVintage}
+            alt="A young Thaafir with his family outside their Athlone home"
+          />
+          <img
+            className="meet-thaafir__collage-roots-group"
+            src={thaafirFamilyGroup}
+            alt="Thaafir with his extended family"
+          />
+        </div>
+
+        <div className="ds-container meet-thaafir__founder-inner">
+          <h2 id="meet-thaafir-roots-heading">Rooted in the Athlone area</h2>
+          <div className="meet-thaafir__copy">
+            <p>
+              Ward 48 is more than just a city-drawn map. For Thaafir, it&rsquo;s the only place
+              he&rsquo;s ever called home — living between Jan Smuts and Thornton. He lives there
+              with his parents and three siblings, but the connection to the area goes a lot
+              deeper: his grandfather has lived in the neighbourhood for decades, and his
+              great-grandfather helped to establish Masjid-us-Salaam in St Athans Rd.
+            </p>
+            <p>
+              When Thaafir&rsquo;s elected, the decisions he&rsquo;ll make and the projects
+              he&rsquo;ll fight for won&rsquo;t be made in abstract; it&rsquo;ll affect him and
+              his family (including his many many cousins!).
             </p>
           </div>
         </div>
       </section>
 
-      <section className="meet-thaafir__facts" aria-label="Quick facts">
-        <div className="meet-thaafir__facts-grid">
-          {FACTS.map((fact) => (
-            <div key={fact.label} className="meet-thaafir__fact">
-              <span className="meet-thaafir__fact-label">{fact.label}</span>
-              <span className="meet-thaafir__fact-value">{fact.value}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      <section className="meet-thaafir__cta" aria-labelledby="meet-thaafir-cta-heading">
+        <h2 id="meet-thaafir-cta-heading">Running for ward councillor</h2>
 
-      <section className="meet-thaafir__road" aria-labelledby="meet-thaafir-road-heading">
-        <p id="meet-thaafir-road-heading" className="ds-eyebrow">
-          The road here
+        <div className="meet-thaafir__cta-photo">
+          <img src={suitPhoto} alt="Thaafir" />
+        </div>
+
+        <p>
+          This community deserves to be represented by one of its own residents, someone who
+          will experience its joys and its pains with you. For far too long, we&rsquo;ve waited
+          on political parties to deliver change for our community and for this city. It&rsquo;s
+          time for us to focus on fighting for{' '}
+          <strong>safer streets, stronger community,</strong> and{' '}
+          <strong>Athlone first.</strong>
         </p>
-        <div className="meet-thaafir__timeline">
-          {TIMELINE.map((item) => (
-            <div
-              key={item.head}
-              className={`meet-thaafir__milestone ${item.highlight ? 'is-highlight' : ''}`}
-            >
-              <span className="meet-thaafir__milestone-number">{item.number}</span>
-              <div className="meet-thaafir__milestone-text">
-                <h3>{item.head}</h3>
-                <p>{item.detail}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
-      <section className="meet-thaafir__quote">
-        <blockquote>
-          &ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&rdquo;
-        </blockquote>
-        <p className="meet-thaafir__quote-attr">— Thaafir</p>
+        <Button variant="accent" onClick={onContactClick}>
+          Let&rsquo;s talk
+        </Button>
       </section>
     </>
   );
