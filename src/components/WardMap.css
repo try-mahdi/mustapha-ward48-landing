@@ -28,3 +28,8 @@
 .ward-map__map .leaflet-control-zoom a:hover {
   background: var(--purple-tint);
 }
+
+/* The map doubles as a picker: tap/click a spot to check it. */
+.ward-map__map.leaflet-container {
+  cursor: crosshair;
+}
