@@ -15,6 +15,19 @@ The contact form sends via EmailJS and needs a few `VITE_EMAILJS_*` values
 in a local `.env.local` file (gitignored) and as GitHub Actions repo secrets
 for deploys. Ask the maintainer for the values.
 
+The volunteer form (`/volunteer`) uses the same EmailJS service and public
+key, plus:
+
+| Variable | Required | What it is |
+| --- | --- | --- |
+| `VITE_EMAILJS_VOLUNTEER_TEMPLATE_ID` | yes | Template that emails the campaign each sign-up. Form fields: `fullName`, `phone`, `email`, `area`, `availability`, `frequency`. |
+| `VITE_EMAILJS_VOLUNTEER_WELCOME_TEMPLATE_ID` | no | Thank-you email to the volunteer, sent only when they give an email. Variables: `to_name`, `to_email` (set it as the template's "To Email"), `whatsapp_url`. |
+| `VITE_VOLUNTEER_WHATSAPP_URL` | no | The volunteers' WhatsApp group/community invite link, shown after signing up and put in the thank-you email. |
+
+Note: WhatsApp's Business Messaging Policy bars political candidates and
+campaigns from the WhatsApp Business Platform (the automated API), so
+volunteers join through an ordinary group/community invite link instead.
+
 ## Donations
 
 Donations go through a Yoco Checkout session created per-donor by a Supabase

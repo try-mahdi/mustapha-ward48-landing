@@ -1,0 +1,112 @@
+.volunteer {
+  position: relative;
+  overflow: hidden;
+  background: var(--cream);
+  padding: 40px 20px var(--section-y);
+}
+@media (min-width: 1024px) {
+  .volunteer {
+    padding-top: 72px;
+  }
+}
+
+.volunteer__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.volunteer__title {
+  font-size: clamp(40px, 7vw, 80px);
+  text-transform: uppercase;
+  color: var(--purple);
+  text-shadow: 0.045em 0.045em 0 var(--gold);
+  margin: 0 0 var(--space-4);
+}
+
+.volunteer__intro {
+  margin: 0 auto var(--space-8);
+  max-width: 520px;
+}
+
+.volunteer__card {
+  text-align: left;
+  background: var(--surface-card);
+  border: var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: var(--card-pad);
+}
+
+.volunteer__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.volunteer__radios {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.volunteer__radio-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.volunteer__radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  cursor: pointer;
+}
+/* Visually hidden but still focusable and announced; the pill is the
+   visible control. */
+.volunteer__radio input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.volunteer__radio span {
+  padding: 10px 18px;
+  border: var(--border-width) solid var(--purple);
+  border-radius: var(--radius-pill);
+  font: var(--weight-body-bold) 15px/1.2 var(--font-body);
+  color: var(--purple);
+  background: var(--surface-card);
+  transition: background var(--duration-fast) var(--ease);
+}
+.volunteer__radio:hover span {
+  background: var(--purple-tint);
+}
+.volunteer__radio input:checked + span {
+  background: var(--purple);
+  color: var(--cream);
+}
+.volunteer__radio input:focus-visible + span {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.volunteer__error {
+  margin: 0;
+  color: var(--status-bad);
+  font-weight: var(--weight-body-bold);
+}
+
+.volunteer__success {
+  text-align: center;
+}
+.volunteer__success-title {
+  font-size: var(--type-h3);
+  font-family: var(--font-display);
+  margin: 0 0 var(--space-4);
+}
+.volunteer__success p {
+  margin: 0 0 var(--space-4);
+}
