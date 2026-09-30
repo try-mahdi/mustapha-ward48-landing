@@ -66,6 +66,10 @@ const THEMES = [
         head: 'Starving the gangs of manpower',
         detail: "Reinvesting in the poorest Capetonians so gangs can't recruit.",
       },
+      {
+        head: 'Put money in our communities',
+        detail: 'Create local jobs and support young people.',
+      },
     ],
   },
   {
@@ -82,6 +86,11 @@ const THEMES = [
         detail: 'Support networks that bring neighbours together.',
       },
       { head: 'Regular town halls', detail: 'Weekly or bi-weekly, open to all residents.' },
+      {
+        head: 'Arts & music in our schools',
+        detail:
+          'Every child deserves access to arts and music education that builds creativity, confidence, and opportunity.',
+      },
     ],
   },
   {
@@ -92,6 +101,19 @@ const THEMES = [
       {
         head: 'Bringing city money back to the ward',
         detail: 'Fixing long-neglected basics like clogged drains.',
+      },
+      {
+        head: 'No to the N2 wall',
+        detail: 'That money can be better spent enriching our community.',
+      },
+      {
+        head: 'Opposing AI data centres',
+        detail: 'Protecting our water and power infrastructure and preventing increased bills.',
+      },
+      {
+        head: 'Protect renters and homeowners',
+        detail:
+          'Cap runaway rent hikes, regulate Airbnbs, and build more affordable homes for Capetonians.',
       },
     ],
   },
@@ -134,7 +156,9 @@ function ThemeAccordion({ theme, isOpen, isMobile, onToggle, itemRef }) {
                 ? '1fr'
                 : pointCount <= 2
                   ? `repeat(${pointCount}, 1fr)`
-                  : 'repeat(auto-fill, minmax(280px, 1fr))',
+                  : pointCount === 4
+                    ? 'repeat(2, 1fr)'
+                    : 'repeat(auto-fill, minmax(280px, 1fr))',
             }}
           >
             {theme.points.map((point, i) => (
