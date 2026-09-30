@@ -3,6 +3,7 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import SiteHeader from './components/SiteHeader.jsx';
 import Hero from './components/Hero.jsx';
 import AboutBlurb from './components/AboutBlurb.jsx';
+import WhereIsWard48 from './components/WhereIsWard48.jsx';
 import ActionSection from './components/ActionSection.jsx';
 import ThePlan from './components/ThePlan.jsx';
 import MeetThaafir from './components/MeetThaafir.jsx';
@@ -66,6 +67,7 @@ function App() {
               <>
                 <Hero />
                 <AboutBlurb />
+                <WhereIsWard48 />
                 <ActionSection
                   onDonateClick={() => setDonateOpen(true)}
                   onContactClick={() => setContactOpen(true)}
