@@ -87,3 +87,37 @@
   place-items: center;
   color: var(--purple);
 }
+
+.ward48__check {
+  margin-bottom: var(--space-2);
+}
+
+.ward48__hint {
+  margin: var(--space-3) 0 0;
+  font-size: var(--type-caption);
+  color: var(--purple-tint);
+}
+
+.ward48__link-button {
+  padding: 0;
+  font: inherit;
+  font-weight: var(--weight-body-bold);
+  color: var(--gold);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.ward48__link-button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.ward48__source a {
+  color: var(--gold);
+}
+.ward48__source a:hover {
+  color: var(--gold-tint);
+}
