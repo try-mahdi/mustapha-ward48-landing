@@ -1,0 +1,89 @@
+.ward48 {
+  background: var(--surface-inverse);
+  color: var(--text-on-inverse);
+  padding: 48px 20px;
+}
+@media (min-width: 1024px) {
+  .ward48 {
+    padding: 96px 48px;
+  }
+}
+
+.ward48__grid {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  gap: 32px;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 1024px) {
+  .ward48__grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 64px;
+  }
+}
+
+.ward48__eyebrow {
+  color: var(--gold);
+  margin: 0 0 var(--space-2);
+}
+
+.ward48__title {
+  color: var(--cream);
+  margin: 0 0 var(--space-6);
+}
+
+.ward48__body {
+  max-width: 520px;
+  margin: 0 0 var(--space-6);
+}
+
+.ward48__suburbs {
+  list-style: none;
+  margin: 0 0 var(--space-8);
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.ward48__suburbs li {
+  font: var(--weight-body-bold) var(--type-caption) / 1.2 var(--font-body);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--gold);
+  border-radius: var(--radius-pill);
+}
+
+.ward48__status {
+  min-height: 1.6em;
+  margin: var(--space-4) 0 var(--space-6);
+  max-width: 520px;
+}
+
+.ward48__source {
+  font-size: var(--type-caption);
+  color: var(--purple-tint);
+  margin: 0;
+}
+
+.ward48__map-card {
+  aspect-ratio: 4 / 5;
+  max-height: 640px;
+  width: 100%;
+  border: var(--border-width) solid var(--gold);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--cream-deep);
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  .ward48__map-card {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.ward48__map-loading {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: var(--purple);
+}
