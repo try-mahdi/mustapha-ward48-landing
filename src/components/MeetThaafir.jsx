@@ -1,55 +1,49 @@
-import thaafirWorkshop from '../assets/thaafir-workshop.jpg';
-import thaafirHoodie from '../assets/thaafir-hoodie.jpg';
-import thaafirUctStudents from '../assets/thaafir-uct-students.jpg';
-import thaafirFamilyVintage from '../assets/thaafir-family-vintage.jpg';
-import thaafirFamilyGroup from '../assets/thaafir-family-group.jpg';
+import heroCollage from '../assets/meet-hero-collage.webp';
+import rootsCollage from '../assets/meet-roots-collage.webp';
 import suitPhoto from '../assets/about-headshot.jpg';
 import IconPattern from './IconPattern.jsx';
-import Button from './Button.jsx';
+import { ContactForm } from './ContactDialog.jsx';
 import './MeetThaafir.css';
 
-function MeetThaafir({ onContactClick }) {
+// Laid out to match the "Meet Thaafir" Canva design. The two photo collages
+// are exported straight from that design (rotations, cut-outs and overlaps
+// included) rather than rebuilt photo by photo, so they stay faithful to it.
+function MeetThaafir() {
   return (
     <>
       <section className="meet-thaafir__hero" aria-labelledby="meet-thaafir-heading">
-        <IconPattern />
+        <IconPattern className="meet-thaafir__pattern" />
 
         <div className="meet-thaafir__hero-head">
-          <p className="ds-eyebrow meet-thaafir__eyebrow">Your candidate for Ward 48</p>
           <h1 id="meet-thaafir-heading" className="meet-thaafir__title">
-            MEET <span className="meet-thaafir__title-accent">THAAFIR</span>
-            <span className="meet-thaafir__dots" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
+            Meet Thaafir
           </h1>
+          <p className="meet-thaafir__subtitle">Candidate for Ward 48</p>
         </div>
 
-        <div className="meet-thaafir__collage">
-          <div className="meet-thaafir__collage-wide">
-            <img src={thaafirWorkshop} alt="Thaafir facilitating a SoWeVote youth workshop" />
-          </div>
-          <div className="meet-thaafir__collage-row">
-            <img src={thaafirHoodie} alt="Thaafir smiling" />
-            <img
-              src={thaafirUctStudents}
-              alt="Thaafir talking with fellow students on the UCT campus"
-            />
-          </div>
-        </div>
+        <img
+          className="meet-thaafir__collage meet-thaafir__collage--hero"
+          src={heroCollage}
+          width={1400}
+          height={1296}
+          alt="Thaafir on eXpresso as CEO and founder of SoWeVote; Thaafir smiling in a hoodie in front of UCT; Thaafir with students on campus; and a News24 headline: Young Mandelas 2024: Thaafir Mustapha, Deepening Democracy."
+        />
       </section>
 
-      <section className="meet-thaafir__founder" aria-labelledby="meet-thaafir-founder-heading">
-        <div className="ds-container meet-thaafir__founder-inner">
-          <p className="ds-eyebrow">Thaafir doesn&rsquo;t just talk about changing politics!</p>
-          <h2 id="meet-thaafir-founder-heading">Non-profit founder &amp; law student</h2>
+      <section className="meet-thaafir__story" aria-labelledby="meet-thaafir-founder-heading">
+        <div className="meet-thaafir__column">
+          <h2 id="meet-thaafir-founder-heading" className="meet-thaafir__heading">
+            Non-profit founder &amp; law student
+          </h2>
+          <p className="meet-thaafir__subtitle meet-thaafir__subtitle--tight">
+            Thaafir doesn&rsquo;t just <em>talk</em> about changing politics!
+          </p>
 
           <div className="meet-thaafir__copy">
             <p>
-              In 2023, Thaafir started the non-profit <strong>SoWeVote</strong> to mobilise and
-              educate young people on politics and voter registration. The big idea was to
-              change the way that South Africans see politics and actually allow people to
+              In 2023, Thaafir started the non-profit <strong><em>SoWeVote</em></strong> to
+              mobilise and educate young people on politics and voter registration. The big idea
+              was to change the way that South Africans see politics and actually allow people to
               understand what politicians are saying in order to make an informed decision on
               Election Day and beyond — so he knows a thing or two about organisational
               management, working with politicians, and what makes people frustrated in the
@@ -68,25 +62,20 @@ function MeetThaafir({ onContactClick }) {
               educates communities on their rights through the UCT Law Clinic.
             </p>
           </div>
-        </div>
 
-        <hr className="meet-thaafir__divider" />
+          <hr className="meet-thaafir__divider" />
 
-        <div className="meet-thaafir__collage meet-thaafir__collage--roots">
           <img
-            className="meet-thaafir__collage-roots-vintage"
-            src={thaafirFamilyVintage}
-            alt="A young Thaafir with his family outside their Athlone home"
+            className="meet-thaafir__collage meet-thaafir__collage--roots"
+            src={rootsCollage}
+            width={1142}
+            height={1322}
+            alt="A vintage black-and-white photo of Thaafir's family with Masjid-us-Salaam, a young Thaafir with his family outside their Athlone home, and Thaafir with his extended family today."
           />
-          <img
-            className="meet-thaafir__collage-roots-group"
-            src={thaafirFamilyGroup}
-            alt="Thaafir with his extended family"
-          />
-        </div>
 
-        <div className="ds-container meet-thaafir__founder-inner">
-          <h2 id="meet-thaafir-roots-heading">Rooted in the Athlone area</h2>
+          <h2 id="meet-thaafir-roots-heading" className="meet-thaafir__heading">
+            Rooted in the Athlone area
+          </h2>
           <div className="meet-thaafir__copy">
             <p>
               Ward 48 is more than just a city-drawn map. For Thaafir, it&rsquo;s the only place
@@ -101,28 +90,42 @@ function MeetThaafir({ onContactClick }) {
               his family (including his many many cousins!).
             </p>
           </div>
+
+          <hr className="meet-thaafir__divider meet-thaafir__divider--end" />
         </div>
       </section>
 
       <section className="meet-thaafir__cta" aria-labelledby="meet-thaafir-cta-heading">
-        <h2 id="meet-thaafir-cta-heading">Running for ward councillor</h2>
+        <IconPattern onPurple className="meet-thaafir__pattern" />
 
-        <div className="meet-thaafir__cta-photo">
-          <img src={suitPhoto} alt="Thaafir" />
+        <div className="meet-thaafir__column">
+          <h2 id="meet-thaafir-cta-heading" className="meet-thaafir__heading">
+            Running for <br />
+            ward councillor
+          </h2>
+
+          <div className="meet-thaafir__cta-photo">
+            <img src={suitPhoto} alt="Thaafir in a navy suit" />
+          </div>
+
+          <div className="meet-thaafir__copy">
+            <p>
+              This community deserves to be represented by one of its own residents, someone who
+              will experience its joys and its pains with you. For far too long, we&rsquo;ve
+              waited on political parties to deliver change for our community and for this city.
+              It&rsquo;s time for us to focus on fighting for{' '}
+              <strong>safer streets, stronger community,</strong> and{' '}
+              <strong>Athlone first.</strong>
+            </p>
+          </div>
+
+          <div className="meet-thaafir__contact" aria-labelledby="meet-thaafir-contact-heading">
+            <h3 id="meet-thaafir-contact-heading" className="meet-thaafir__contact-title">
+              Let&rsquo;s talk
+            </h3>
+            <ContactForm />
+          </div>
         </div>
-
-        <p>
-          This community deserves to be represented by one of its own residents, someone who
-          will experience its joys and its pains with you. For far too long, we&rsquo;ve waited
-          on political parties to deliver change for our community and for this city. It&rsquo;s
-          time for us to focus on fighting for{' '}
-          <strong>safer streets, stronger community,</strong> and{' '}
-          <strong>Athlone first.</strong>
-        </p>
-
-        <Button variant="accent" onClick={onContactClick}>
-          Let&rsquo;s talk
-        </Button>
       </section>
     </>
   );

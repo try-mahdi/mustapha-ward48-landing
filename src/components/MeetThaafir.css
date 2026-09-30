@@ -1,241 +1,166 @@
-@keyframes meet-thaafir-dot-bounce {
-  0%,
-  80%,
-  100% {
-    opacity: 0.25;
-    transform: translateY(0);
-  }
-  40% {
-    opacity: 1;
-    transform: translateY(-6px);
-  }
+/* Matches the "Meet Thaafir" Canva design: centred Montserrat Alternates
+   headings, Montserrat body copy set justified, a big-icon pattern behind the
+   hero and the purple closing section, and the design's own photo collages. */
+
+.meet-thaafir__hero,
+.meet-thaafir__story {
+  position: relative;
+  background: var(--cream);
 }
 
 .meet-thaafir__hero {
-  position: relative;
   overflow: hidden;
   /* #main-content's own padding-top already clears the fixed site header —
      this is just the hero's own breathing room on top of that. */
-  background: var(--cream);
-  padding: 40px 20px 0;
+  padding: 40px 0 var(--space-6);
 }
 @media (min-width: 1024px) {
   .meet-thaafir__hero {
-    padding: 72px 48px 0;
+    padding: 88px 0 var(--space-8);
   }
 }
 
-/* This hero is much taller than about-blurb (title + photo collage stack
-   up), so the shared pattern's default center alignment leaves a bare band
-   above the collage — pin the first/last icon rows to the top/bottom edges
-   instead so the pattern always reaches all the way down. */
-.meet-thaafir__hero .icon-pattern {
-  align-content: space-between;
+/* Canva's pattern uses much bigger icons than the homepage one. */
+.meet-thaafir__pattern .icon-pattern__icon {
+  width: 72px;
+  height: 72px;
+  opacity: 0.2;
+}
+@media (min-width: 768px) {
+  .meet-thaafir__pattern .icon-pattern__icon {
+    width: 150px;
+    height: 150px;
+  }
+}
+.meet-thaafir__hero .meet-thaafir__pattern {
+  align-content: start;
 }
 
 .meet-thaafir__hero-head {
   position: relative;
   z-index: 1;
-  max-width: var(--container-max);
-  margin: 0 auto;
-}
-
-.meet-thaafir__eyebrow {
-  color: var(--ink-60);
-  margin-bottom: var(--space-4);
-  /* Smaller than the usual eyebrow size here specifically — "Meet Thaafir"
-     below it is the actual page header, so this shouldn't compete with it
-     on narrow screens. */
-  font-size: 11px;
-}
-@media (min-width: 1024px) {
-  .meet-thaafir__eyebrow {
-    font-size: var(--type-caption);
-  }
+  text-align: center;
+  padding-inline: var(--gutter);
 }
 
 .meet-thaafir__title {
-  font-size: clamp(32px, 7vw, 88px);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  margin: 0 0 var(--space-6);
-}
-@media (min-width: 1024px) {
-  .meet-thaafir__title {
-    line-height: 0.9;
-  }
+  font-size: clamp(44px, 8.4vw, 116px);
+  line-height: 1.05;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--purple);
+  text-shadow: 0.045em 0.045em 0 var(--gold);
+  margin: 0;
 }
 
-.meet-thaafir__title-accent {
-  color: var(--gold);
+.meet-thaafir__subtitle {
+  font-family: var(--font-subhead);
+  font-weight: 400;
+  font-size: clamp(15px, 1.9vw, 26px);
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  text-align: center;
+  margin: var(--space-2) 0 0;
+}
+.meet-thaafir__subtitle--tight {
+  margin: 0 0 var(--space-8);
 }
 
-.meet-thaafir__dots {
-  display: inline-flex;
-  gap: 3px;
-  margin-left: 4px;
-  vertical-align: baseline;
-}
-@media (min-width: 1024px) {
-  .meet-thaafir__dots {
-    gap: 5px;
-    margin-left: 6px;
-  }
-}
-
-.meet-thaafir__dots span {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--gold);
-  animation: meet-thaafir-dot-bounce 1.4s ease-in-out infinite;
-}
-@media (min-width: 1024px) {
-  .meet-thaafir__dots span {
-    width: 10px;
-    height: 10px;
-  }
-}
-.meet-thaafir__dots span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.meet-thaafir__dots span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-/* Photo collages — hero intro (workshop + hoodie + UCT campus) and the
-   "rooted in Athlone" pair (vintage family photo + extended family). Both
-   share the same framed-photo look as the rest of the site (radius-lg,
-   purple outline) rather than Canva's rotated scrapbook treatment, to stay
-   consistent with how photos are framed everywhere else on the site. */
 .meet-thaafir__collage {
   position: relative;
   z-index: 1;
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding-bottom: var(--space-12);
-  display: grid;
-  gap: var(--space-4);
-}
-@media (min-width: 1024px) {
-  .meet-thaafir__collage {
-    gap: var(--space-6);
-    padding-bottom: var(--space-16);
-  }
-}
-
-.meet-thaafir__collage img {
   display: block;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-  border: var(--border-width) solid var(--purple);
-  object-fit: cover;
+  height: auto;
 }
-
-.meet-thaafir__collage-wide img {
-  aspect-ratio: 16 / 9;
+.meet-thaafir__collage--hero {
+  max-width: 1366px;
+  margin: calc(-1 * clamp(4px, 2vw, 32px)) auto 0;
 }
-@media (min-width: 1024px) {
-  .meet-thaafir__collage-wide img {
-    aspect-ratio: 21 / 8;
-  }
-}
-
-.meet-thaafir__collage-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-}
-@media (min-width: 1024px) {
-  .meet-thaafir__collage-row {
-    gap: var(--space-6);
-  }
-}
-.meet-thaafir__collage-row img {
-  aspect-ratio: 4 / 3;
-}
-
 .meet-thaafir__collage--roots {
-  grid-template-columns: 1fr;
+  margin: var(--space-8) 0 var(--space-8);
+}
+
+/* Shared text column — Canva's is 80% of the page width. */
+.meet-thaafir__column {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   padding: var(--space-8) var(--gutter) var(--space-12);
+  box-sizing: border-box;
 }
 @media (min-width: 1024px) {
-  .meet-thaafir__collage--roots {
-    grid-template-columns: minmax(0, 340px) 1fr;
-    align-items: stretch;
-    padding: var(--space-8) var(--gutter) var(--space-16);
-  }
-}
-.meet-thaafir__collage-roots-vintage {
-  aspect-ratio: 6 / 5;
-}
-.meet-thaafir__collage-roots-group {
-  aspect-ratio: 16 / 9;
-}
-@media (min-width: 1024px) {
-  .meet-thaafir__collage-roots-group {
-    aspect-ratio: auto;
+  .meet-thaafir__column {
+    padding-block: var(--space-12) var(--space-16);
   }
 }
 
-.meet-thaafir__founder {
-  background: var(--cream);
-}
-
-.meet-thaafir__founder-inner {
-  padding: var(--space-8) var(--gutter);
-}
-@media (min-width: 1024px) {
-  .meet-thaafir__founder-inner {
-    padding: var(--space-12) var(--gutter);
-  }
-}
-
-.meet-thaafir__founder-inner .ds-eyebrow {
-  display: block;
-  margin-bottom: var(--space-3);
+.meet-thaafir__heading {
+  font-size: clamp(34px, 5.8vw, 76px);
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--purple);
+  margin: 0 0 var(--space-3);
 }
 
 .meet-thaafir__copy {
-  max-width: 760px;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-6);
+  font-family: var(--font-subhead);
+  font-weight: 400;
+  font-size: clamp(16px, 1.55vw, 20px);
+  line-height: 1.45;
+  color: var(--ink);
+  text-align: justify;
+  hyphens: auto;
+  margin-top: var(--space-6);
 }
 .meet-thaafir__copy p {
   margin: 0;
 }
 .meet-thaafir__copy strong {
+  font-weight: 700;
   color: var(--purple);
 }
 
 .meet-thaafir__divider {
-  max-width: var(--container-max);
-  margin: 0 auto;
   border: none;
   border-top: var(--border-width) solid var(--gold);
+  margin: var(--space-16) 0 0;
+}
+.meet-thaafir__divider--end {
+  margin-top: var(--space-16);
+  margin-bottom: 0;
+}
+.meet-thaafir__story .meet-thaafir__column {
+  padding-bottom: 0;
 }
 
+/* Closing section — purple, gold heading, cream copy. */
 .meet-thaafir__cta {
+  position: relative;
+  overflow: hidden;
   background: var(--purple);
-  padding: var(--space-12) var(--gutter);
-  text-align: center;
 }
-@media (min-width: 1024px) {
-  .meet-thaafir__cta {
-    padding: var(--space-16) var(--gutter);
-  }
+.meet-thaafir__cta .meet-thaafir__pattern {
+  align-content: space-between;
+}
+.meet-thaafir__cta .meet-thaafir__pattern .icon-pattern__icon {
+  opacity: 0.12;
 }
 
-.meet-thaafir__cta h2 {
+.meet-thaafir__cta .meet-thaafir__heading {
   color: var(--gold);
+  margin-bottom: var(--space-8);
 }
 
 .meet-thaafir__cta-photo {
-  max-width: 320px;
+  max-width: 480px;
   margin: 0 auto var(--space-8);
   overflow: hidden;
   border-radius: var(--radius-lg);
@@ -244,16 +169,32 @@
 .meet-thaafir__cta-photo img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 648 / 854;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 14%;
 }
 
-.meet-thaafir__cta p {
+.meet-thaafir__cta .meet-thaafir__copy {
   color: var(--cream);
-  max-width: 640px;
-  margin: 0 auto var(--space-8);
 }
-.meet-thaafir__cta p strong {
-  color: var(--gold);
+.meet-thaafir__cta .meet-thaafir__copy strong {
+  color: var(--cream);
+}
+
+.meet-thaafir__contact {
+  max-width: 640px;
+  margin: var(--space-12) auto 0;
+  padding: var(--card-pad);
+  background: var(--cream);
+  border: var(--border-width) solid var(--gold);
+  border-radius: var(--radius-lg);
+  text-align: left;
+}
+.meet-thaafir__contact-title {
+  font-family: var(--font-display);
+  font-size: var(--type-h3);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--purple);
+  margin: 0 0 var(--space-2);
 }

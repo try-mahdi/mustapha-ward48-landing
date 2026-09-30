@@ -81,7 +81,7 @@ function App() {
           />
           <Route
             path="/meet-thaafir"
-            element={<MeetThaafir onContactClick={() => setContactOpen(true)} />}
+            element={<MeetThaafir />}
           />
         </Routes>
       </main>

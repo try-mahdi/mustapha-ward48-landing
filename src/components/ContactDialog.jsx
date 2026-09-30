@@ -9,7 +9,9 @@ const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const IS_CONFIGURED = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
 
-function ContactForm({ onClose }) {
+// Exported so a page can show the form inline (Meet Thaafir does); without
+// onClose there's nothing to close, so the success state drops that button.
+export function ContactForm({ onClose }) {
   const formRef = useRef(null);
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
@@ -34,9 +36,11 @@ function ContactForm({ onClose }) {
     return (
       <div className="contact-dialog__status" role="status">
         <p className="modal__intro">Thanks — the campaign will be in touch ASAP.</p>
-        <button type="button" className="modal__submit" onClick={onClose}>
-          Close
-        </button>
+        {onClose && (
+          <button type="button" className="modal__submit" onClick={onClose}>
+            Close
+          </button>
+        )}
       </div>
     );
   }
