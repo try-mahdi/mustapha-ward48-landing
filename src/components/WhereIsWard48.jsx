@@ -6,7 +6,8 @@ import './WhereIsWard48.css';
 const WardMap = lazy(() => import('./WardMap.jsx'));
 
 // Largest first, from the City of Cape Town's Official Planning Suburbs
-// layer intersected with the 2026 boundary (slivers under 1% left out).
+// layer intersected with the 2026 boundary (slivers under 1% left out, and
+// Crawford left out at the campaign's request).
 const SUBURBS = [
   'Athlone',
   'Belthorn Estate',
@@ -14,7 +15,6 @@ const SUBURBS = [
   'Pinati Estate',
   'Penlyn Estate',
   'Mountview',
-  'Crawford',
 ];
 
 function inRing([x, y], ring) {
@@ -78,7 +78,7 @@ function WhereIsWard48() {
           </h2>
           <p className="ward48__body">
             Ward 48 takes in Athlone, Belthorn Estate, Belgravia, Pinati Estate and Penlyn Estate,
-            along with parts of Mountview and Crawford.
+            along with part of Mountview.
           </p>
 
           <ul className="ward48__suburbs" aria-label="Suburbs in Ward 48">
