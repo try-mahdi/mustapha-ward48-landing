@@ -6,6 +6,13 @@ import iconSamoosa from '../assets/icons/samoosa.svg';
 import iconPlasticChair from '../assets/icons/plastic-chair.svg';
 import iconKlopseHeadgear from '../assets/icons/klopse-headgear.svg';
 import iconGatsby from '../assets/icons/gatsby.svg';
+import iconAthloneStadiumOnPurple from '../assets/icons/athlone-stadium-on-purple.svg';
+import iconDumsOnPurple from '../assets/icons/dums-on-purple.svg';
+import iconTaxiOnPurple from '../assets/icons/taxi-on-purple.svg';
+import iconSamoosaOnPurple from '../assets/icons/samoosa-on-purple.svg';
+import iconPlasticChairOnPurple from '../assets/icons/plastic-chair-on-purple.svg';
+import iconKlopseHeadgearOnPurple from '../assets/icons/klopse-headgear-on-purple.svg';
+import iconGatsbyOnPurple from '../assets/icons/gatsby-on-purple.svg';
 import { useIsMobile } from '../hooks/useIsMobile.js';
 import './IconPattern.css';
 
@@ -17,6 +24,15 @@ const PATTERN_ICONS = {
   'plastic-chair': iconPlasticChair,
   'klopse-headgear': iconKlopseHeadgear,
   gatsby: iconGatsby,
+};
+const PATTERN_ICONS_ON_PURPLE = {
+  'athlone-stadium': iconAthloneStadiumOnPurple,
+  dums: iconDumsOnPurple,
+  taxi: iconTaxiOnPurple,
+  samoosa: iconSamoosaOnPurple,
+  'plastic-chair': iconPlasticChairOnPurple,
+  'klopse-headgear': iconKlopseHeadgearOnPurple,
+  gatsby: iconGatsbyOnPurple,
 };
 const PATTERN_SLUGS = Object.keys(PATTERN_ICONS);
 const PATTERN_ROTATIONS = [-25, -15, -10, 0, 10, 15, 25, 45, -45, 30, -30, 5, -5, 20, -20];
@@ -45,20 +61,21 @@ function buildIconPattern(isMobile) {
   return { cols, items };
 }
 
-function IconPattern() {
+function IconPattern({ onPurple = false, className = '' }) {
   const isMobile = useIsMobile();
   const { cols, items } = useMemo(() => buildIconPattern(isMobile), [isMobile]);
+  const icons = onPurple ? PATTERN_ICONS_ON_PURPLE : PATTERN_ICONS;
 
   return (
     <div
-      className="icon-pattern"
+      className={`icon-pattern ${className}`.trim()}
       aria-hidden="true"
       style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
     >
       {items.map((item) => (
         <img
           key={item.key}
-          src={PATTERN_ICONS[item.slug]}
+          src={icons[item.slug]}
           alt=""
           className="icon-pattern__icon"
           style={{ transform: `rotate(${item.rotation}deg) translate(${item.offsetX}px, ${item.offsetY}px)` }}
