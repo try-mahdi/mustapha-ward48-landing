@@ -1,24 +1,19 @@
 import { useId, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Input from './Input.jsx';
-import Button from './Button.jsx';
 import IconPattern from './IconPattern.jsx';
 import { WARD48_SUBURBS } from '../data/ward48-suburbs.js';
 import './VolunteerPage.css';
 
-// Same EmailJS account as the contact form, with two extra templates:
-// - VOLUNTEER_TEMPLATE_ID emails the campaign each new sign-up.
-// - WELCOME_TEMPLATE_ID (optional) emails the volunteer a thank-you with the
-//   WhatsApp link, when they gave an email address.
+// For now sign-ups go through the contact form's existing EmailJS template
+// (same service, key and inbox), so nothing new needs setting up: the
+// volunteer details are mapped onto that template's fields, with the extra
+// answers written into its message. A dedicated volunteer template and an
+// automated thank-you/WhatsApp email can come later.
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-const VOLUNTEER_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_VOLUNTEER_TEMPLATE_ID;
-const WELCOME_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_VOLUNTEER_WELCOME_TEMPLATE_ID;
-const IS_CONFIGURED = Boolean(SERVICE_ID && PUBLIC_KEY && VOLUNTEER_TEMPLATE_ID);
-
-// The volunteers' WhatsApp group/community invite link. Shown after signing
-// up and put in the welcome email; leave empty to hide the button.
-const WHATSAPP_URL = import.meta.env.VITE_VOLUNTEER_WHATSAPP_URL || '';
+const IS_CONFIGURED = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
 
 const AVAILABILITY = ['Weekdays', 'Weekends', 'Both'];
 const FREQUENCY = ['Once-off', 'Occasionally', 'Regularly', 'As much as needed'];
@@ -59,29 +54,30 @@ function VolunteerForm() {
       return;
     }
 
-    const form = formRef.current;
-    const data = Object.fromEntries(new FormData(form));
+    const data = Object.fromEntries(new FormData(formRef.current));
+    const params = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      cell: data.phone,
+      email: data.email,
+      message: [
+        'VOLUNTEER SIGN-UP',
+        `Name: ${data.firstName} ${data.lastName}`,
+        `WhatsApp / mobile: ${data.phone}`,
+        `Email: ${data.email || '(not given)'}`,
+        `Area / neighbourhood: ${data.area}`,
+        `Usually available: ${data.availability}`,
+        `How often: ${data.frequency}`,
+      ].join('\n'),
+    };
+
     setStatus('sending');
     try {
-      await emailjs.sendForm(SERVICE_ID, VOLUNTEER_TEMPLATE_ID, form, { publicKey: PUBLIC_KEY });
-      setFirstName(String(data.fullName).trim().split(/\s+/)[0]);
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, params, { publicKey: PUBLIC_KEY });
+      setFirstName(data.firstName.trim());
       setStatus('success');
     } catch {
       setStatus('error');
-      return;
-    }
-
-    // The thank-you email is a nice-to-have: the sign-up has already reached
-    // the campaign, so a failure here shouldn't turn success into an error.
-    if (WELCOME_TEMPLATE_ID && data.email) {
-      emailjs
-        .send(
-          SERVICE_ID,
-          WELCOME_TEMPLATE_ID,
-          { to_name: data.fullName, to_email: data.email, whatsapp_url: WHATSAPP_URL },
-          { publicKey: PUBLIC_KEY },
-        )
-        .catch(() => {});
     }
   };
 
@@ -90,21 +86,16 @@ function VolunteerForm() {
       <div className="volunteer__success" role="status">
         <h2 className="volunteer__success-title">Thank you{firstName && `, ${firstName}`}!</h2>
         <p>Someone from our team will contact you for more information.</p>
-        {WHATSAPP_URL && (
-          <>
-            <p>In the meantime, join the volunteers&rsquo; WhatsApp group:</p>
-            <Button variant="accent" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-              Join us on WhatsApp
-            </Button>
-          </>
-        )}
       </div>
     );
   }
 
   return (
     <form ref={formRef} className="volunteer__form" onSubmit={handleSubmit}>
-      <Input label="Full name" name="fullName" type="text" autoComplete="name" required />
+      <div className="volunteer__name-row">
+        <Input label="Name" name="firstName" type="text" autoComplete="given-name" required />
+        <Input label="Surname" name="lastName" type="text" autoComplete="family-name" required />
+      </div>
       <Input
         label="WhatsApp / mobile number"
         name="phone"
@@ -118,7 +109,7 @@ function VolunteerForm() {
         name="email"
         type="email"
         autoComplete="email"
-        hint="Optional — we'll email you the WhatsApp link."
+        hint="Optional"
       />
       <Input
         label="Area / neighbourhood"

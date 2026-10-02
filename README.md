@@ -15,18 +15,16 @@ The contact form sends via EmailJS and needs a few `VITE_EMAILJS_*` values
 in a local `.env.local` file (gitignored) and as GitHub Actions repo secrets
 for deploys. Ask the maintainer for the values.
 
-The volunteer form (`/volunteer`) uses the same EmailJS service and public
-key, plus:
-
-| Variable | Required | What it is |
-| --- | --- | --- |
-| `VITE_EMAILJS_VOLUNTEER_TEMPLATE_ID` | yes | Template that emails the campaign each sign-up. Form fields: `fullName`, `phone`, `email`, `area`, `availability`, `frequency`. |
-| `VITE_EMAILJS_VOLUNTEER_WELCOME_TEMPLATE_ID` | no | Thank-you email to the volunteer, sent only when they give an email. Variables: `to_name`, `to_email` (set it as the template's "To Email"), `whatsapp_url`. |
-| `VITE_VOLUNTEER_WHATSAPP_URL` | no | The volunteers' WhatsApp group/community invite link, shown after signing up and put in the thank-you email. |
+The volunteer form (`/volunteer`) currently sends through the contact form's
+same EmailJS template, so it needs nothing extra: sign-ups arrive in the
+contact inbox with a message starting "VOLUNTEER SIGN-UP" that lists the
+area, availability and how often they can help. A dedicated volunteer
+template and an automated thank-you email (with the volunteers' WhatsApp
+group link) are planned for later.
 
 Note: WhatsApp's Business Messaging Policy bars political candidates and
 campaigns from the WhatsApp Business Platform (the automated API), so
-volunteers join through an ordinary group/community invite link instead.
+volunteers should join through an ordinary group/community invite link.
 
 ## Donations
 

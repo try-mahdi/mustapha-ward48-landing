@@ -110,3 +110,15 @@
 .volunteer__success p {
   margin: 0 0 var(--space-4);
 }
+
+.volunteer__name-row {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .volunteer__name-row {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+}
