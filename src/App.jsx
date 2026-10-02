@@ -14,6 +14,9 @@ import ContactDialog from './components/ContactDialog.jsx';
 import DonationStatusBanner from './components/DonationStatusBanner.jsx';
 import './App.css';
 
+const DONATE_PROMPT_KEY = 'donate-prompt-shown';
+const DONATE_PROMPT_DELAY_MS = 1500;
+
 function App() {
   const [donateOpen, setDonateOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
@@ -45,6 +48,31 @@ function App() {
     if (!donationStatus) return;
     navigate({ pathname, search: '' }, { replace: true });
     // Only ever needs to run once, right after mount picks up the banner.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Pop the donate dialog up shortly after someone arrives — once per
+  // browser session, so it doesn't reappear on every page or refresh, and
+  // never for someone just back from Yoco (they've seen the status banner).
+  useEffect(() => {
+    if (donationStatus) return;
+    try {
+      if (sessionStorage.getItem(DONATE_PROMPT_KEY)) return;
+    } catch {
+      // Storage blocked (private mode etc.): still show it, just once per load.
+    }
+    const timer = setTimeout(() => {
+      setDonateOpen(true);
+      // Marked only once it actually opens, so a cancelled timer (StrictMode's
+      // double-run, or leaving instantly) doesn't count as "shown".
+      try {
+        sessionStorage.setItem(DONATE_PROMPT_KEY, '1');
+      } catch {
+        // See above.
+      }
+    }, DONATE_PROMPT_DELAY_MS);
+    return () => clearTimeout(timer);
+    // Mount only: the status is read once above.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
