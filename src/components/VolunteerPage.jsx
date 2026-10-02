@@ -1,19 +1,26 @@
 import { useId, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Input from './Input.jsx';
+import Button from './Button.jsx';
 import IconPattern from './IconPattern.jsx';
 import { WARD48_SUBURBS } from '../data/ward48-suburbs.js';
 import './VolunteerPage.css';
 
-// For now sign-ups go through the contact form's existing EmailJS template
-// (same service, key and inbox), so nothing new needs setting up: the
-// volunteer details are mapped onto that template's fields, with the extra
-// answers written into its message. A dedicated volunteer template and an
-// automated thank-you/WhatsApp email can come later.
+// Sign-ups go through the contact form's existing EmailJS template (same
+// service, key and inbox): the volunteer details are mapped onto that
+// template's fields, with the extra answers written into its message.
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const IS_CONFIGURED = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
+
+// The volunteers' WhatsApp group, shown after signing up.
+const WHATSAPP_URL = 'https://chat.whatsapp.com/CjHLUxxrkvB4RaSNwXDqHt';
+
+// EmailJS template for the thank-you email to volunteers who give an email
+// address (it uses {{to_name}} and is sent to {{to_email}}). Template IDs
+// aren't secret, so it lives here; while it's empty no thank-you is sent.
+const WELCOME_TEMPLATE_ID = '';
 
 const AVAILABILITY = ['Weekdays', 'Weekends', 'Both'];
 const FREQUENCY = ['Once-off', 'Occasionally', 'Regularly', 'As much as needed'];
@@ -78,6 +85,20 @@ function VolunteerForm() {
       setStatus('success');
     } catch {
       setStatus('error');
+      return;
+    }
+
+    // The thank-you email is a nice-to-have: the sign-up has already reached
+    // the campaign, so a failure here mustn't turn success into an error.
+    if (WELCOME_TEMPLATE_ID && data.email) {
+      emailjs
+        .send(
+          SERVICE_ID,
+          WELCOME_TEMPLATE_ID,
+          { to_name: data.firstName.trim(), to_email: data.email },
+          { publicKey: PUBLIC_KEY },
+        )
+        .catch(() => {});
     }
   };
 
@@ -85,7 +106,14 @@ function VolunteerForm() {
     return (
       <div className="volunteer__success" role="status">
         <h2 className="volunteer__success-title">Thank you{firstName && `, ${firstName}`}!</h2>
-        <p>Someone from our team will contact you for more information.</p>
+        <p>
+          Thank you so much for being willing to help us out on the campaign. Someone from our
+          team will contact you for more information.
+        </p>
+        <p>Join our WhatsApp group so we can get started:</p>
+        <Button variant="accent" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+          Join our WhatsApp group
+        </Button>
       </div>
     );
   }
