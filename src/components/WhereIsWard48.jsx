@@ -1,21 +1,10 @@
 import { lazy, Suspense, useState } from 'react';
 import ward48 from '../data/ward48-2026.json';
+import { WARD48_SUBURBS as SUBURBS } from '../data/ward48-suburbs.js';
 import StreetSearch from './StreetSearch.jsx';
 import './WhereIsWard48.css';
 
 const WardMap = lazy(() => import('./WardMap.jsx'));
-
-// Largest first, from the City of Cape Town's Official Planning Suburbs
-// layer intersected with the 2026 boundary (slivers under 1% left out, and
-// Crawford left out at the campaign's request).
-const SUBURBS = [
-  'Athlone',
-  'Belthorn Estate',
-  'Belgravia',
-  'Pinati Estate',
-  'Penlyn Estate',
-  'Mountview',
-];
 
 function inRing([x, y], ring) {
   let inside = false;

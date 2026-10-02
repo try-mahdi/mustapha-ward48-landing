@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { key: 'home', to: '/', label: 'Home' },
   { key: 'plan', to: '/the-plan', label: 'The Plan' },
   { key: 'about', to: '/meet-thaafir', label: 'Meet Thaafir' },
+  { key: 'volunteer', to: '/volunteer', label: 'Volunteer' },
   { key: 'report', label: 'Report a problem', disabled: true },
 ];
 

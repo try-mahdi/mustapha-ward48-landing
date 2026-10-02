@@ -1,13 +1,13 @@
+import { Link } from 'react-router-dom';
 import Icon from './Icon.jsx';
 import './GetInvolved.css';
 
 const LINKS = [
   { key: 'donate', icon: 'heart-handshake', label: 'Donate', action: 'donate' },
-  { key: 'contact', icon: 'mail', label: 'Contact us', action: 'contact' },
-  // { key: 'volunteer', icon: 'users', label: 'Volunteer', href: '#' },
+  { key: 'volunteer', icon: 'users', label: 'Volunteer', to: '/volunteer' },
 ];
 
-function GetInvolved({ onDonateClick, onContactClick }) {
+function GetInvolved({ onDonateClick }) {
   return (
     <div className="get-involved">
       <p className="get-involved__eyebrow">Take action</p>
@@ -32,21 +32,11 @@ function GetInvolved({ onDonateClick, onContactClick }) {
             );
           }
 
-          if (item.action === 'contact') {
-            return (
-              <li key={item.key}>
-                <button type="button" className="get-involved__link" onClick={onContactClick}>
-                  {content}
-                </button>
-              </li>
-            );
-          }
-
           return (
             <li key={item.key}>
-              <a href={item.href} className="get-involved__link">
+              <Link to={item.to} className="get-involved__link">
                 {content}
-              </a>
+              </Link>
             </li>
           );
         })}

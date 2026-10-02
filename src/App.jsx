@@ -7,6 +7,7 @@ import WhereIsWard48 from './components/WhereIsWard48.jsx';
 import ActionSection from './components/ActionSection.jsx';
 import ThePlan from './components/ThePlan.jsx';
 import MeetThaafir from './components/MeetThaafir.jsx';
+import VolunteerPage from './components/VolunteerPage.jsx';
 import SiteFooter from './components/SiteFooter.jsx';
 import Donation from './components/donation/index.js';
 import ContactDialog from './components/ContactDialog.jsx';
@@ -68,10 +69,7 @@ function App() {
                 <Hero />
                 <AboutBlurb />
                 <WhereIsWard48 />
-                <ActionSection
-                  onDonateClick={() => setDonateOpen(true)}
-                  onContactClick={() => setContactOpen(true)}
-                />
+                <ActionSection onDonateClick={() => setDonateOpen(true)} />
               </>
             }
           />
@@ -83,6 +81,7 @@ function App() {
             path="/meet-thaafir"
             element={<MeetThaafir />}
           />
+          <Route path="/volunteer" element={<VolunteerPage />} />
         </Routes>
       </main>
 
