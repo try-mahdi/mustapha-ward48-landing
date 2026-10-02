@@ -122,3 +122,57 @@
     gap: var(--space-4);
   }
 }
+
+/* Video banner — mirrors the homepage hero (absolute, cover-fit video),
+   with a purple scrim so the cream title stays readable over the footage. */
+.volunteer-hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+  padding: 48px 20px;
+  background: var(--purple-deep);
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .volunteer-hero {
+    min-height: 480px;
+  }
+}
+
+.volunteer-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.volunteer-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--purple-deep);
+  opacity: 0.55;
+}
+
+.volunteer-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.volunteer-hero__eyebrow {
+  color: var(--gold);
+}
+
+.volunteer-hero .volunteer__title {
+  color: var(--cream);
+}
+
+.volunteer-hero .volunteer__intro {
+  color: var(--cream);
+  margin-bottom: 0;
+}
