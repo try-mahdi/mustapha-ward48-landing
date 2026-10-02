@@ -1,9 +1,8 @@
-import { useId, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Input from './Input.jsx';
 import Button from './Button.jsx';
 import IconPattern from './IconPattern.jsx';
-import { WARD48_SUBURBS } from '../data/ward48-suburbs.js';
 import './VolunteerPage.css';
 
 // Sign-ups go through the contact form's existing EmailJS template (same
@@ -19,8 +18,8 @@ const WHATSAPP_URL = 'https://chat.whatsapp.com/CjHLUxxrkvB4RaSNwXDqHt';
 
 // EmailJS template for the thank-you email to volunteers who give an email
 // address (it uses {{to_name}} and is sent to {{to_email}}). Template IDs
-// aren't secret, so it lives here; while it's empty no thank-you is sent.
-const WELCOME_TEMPLATE_ID = '';
+// aren't secret, so it lives here ("Volunteer Welcome" in the dashboard).
+const WELCOME_TEMPLATE_ID = 'template_xfy3sbv';
 
 const AVAILABILITY = ['Weekdays', 'Weekends', 'Both'];
 const FREQUENCY = ['Once-off', 'Occasionally', 'Regularly', 'As much as needed'];
@@ -49,7 +48,6 @@ function RadioGroup({ legend, name, options }) {
 
 function VolunteerForm() {
   const formRef = useRef(null);
-  const suburbListId = useId();
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [firstName, setFirstName] = useState('');
 
@@ -72,7 +70,6 @@ function VolunteerForm() {
         `Name: ${data.firstName} ${data.lastName}`,
         `WhatsApp / mobile: ${data.phone}`,
         `Email: ${data.email || '(not given)'}`,
-        `Area / neighbourhood: ${data.area}`,
         `Usually available: ${data.availability}`,
         `How often: ${data.frequency}`,
       ].join('\n'),
@@ -139,19 +136,6 @@ function VolunteerForm() {
         autoComplete="email"
         hint="Optional"
       />
-      <Input
-        label="Area / neighbourhood"
-        name="area"
-        type="text"
-        list={suburbListId}
-        autoComplete="off"
-        required
-      />
-      <datalist id={suburbListId}>
-        {WARD48_SUBURBS.map((suburb) => (
-          <option key={suburb} value={suburb} />
-        ))}
-      </datalist>
 
       <RadioGroup
         legend="When are you usually available?"
