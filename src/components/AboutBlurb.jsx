@@ -1,18 +1,13 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import aboutHeadshot from '../assets/about-headshot.jpg';
 import IconPattern from './IconPattern.jsx';
 import './AboutBlurb.css';
 
-// The campaign video. Only the photo and play button render until someone
-// presses play, so YouTube's player (and its cookies — this is the
-// privacy-enhanced youtube-nocookie domain) never load for visitors who don't.
+// The campaign video, as a standard YouTube embed with YouTube's own
+// thumbnail (privacy-enhanced youtube-nocookie domain).
 const VIDEO_ID = 'BO0FkmMRFYU';
 const VIDEO_TITLE = 'It Belongs to Us | Thaafir Mustapha for Ward Councillor';
 
 function AboutBlurb() {
-  const [playing, setPlaying] = useState(false);
-
   return (
     <section className="about-blurb" id="about" aria-labelledby="about-heading">
       <IconPattern />
@@ -33,35 +28,16 @@ function AboutBlurb() {
           </Link>
         </div>
 
-        <div className={`about-blurb__media ${playing ? 'is-playing' : ''}`}>
-          {playing ? (
-            <iframe
-              className="about-blurb__video"
-              src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0&playsinline=1`}
-              title={VIDEO_TITLE}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
-          ) : (
-            <>
-              <img
-                src={aboutHeadshot}
-                alt="Mustapha smiling"
-                className="about-blurb__media-image"
-              />
-              <button
-                type="button"
-                className="about-blurb__play"
-                onClick={() => setPlaying(true)}
-                aria-label={`Play video: ${VIDEO_TITLE}`}
-              >
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--purple)" aria-hidden="true">
-                  <polygon points="6 3 20 12 6 21 6 3" />
-                </svg>
-              </button>
-            </>
-          )}
+        <div className="about-blurb__media">
+          <iframe
+            className="about-blurb__video"
+            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0&playsinline=1`}
+            title={VIDEO_TITLE}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
         </div>
       </div>
     </section>
