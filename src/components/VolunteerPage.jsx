@@ -72,6 +72,7 @@ function VolunteerForm() {
         `Email: ${data.email || '(not given)'}`,
         `Usually available: ${data.availability}`,
         `How often: ${data.frequency}`,
+        `Open to a leadership position: ${data.leadership ? 'Yes' : 'No'}`,
       ].join('\n'),
     };
 
@@ -143,6 +144,12 @@ function VolunteerForm() {
         options={AVAILABILITY}
       />
       <RadioGroup legend="How often can you volunteer?" name="frequency" options={FREQUENCY} />
+
+      <label className="volunteer__checkbox">
+        <input type="checkbox" name="leadership" value="Yes" />
+        <span className="volunteer__checkbox-box" aria-hidden="true" />
+        <span>I&rsquo;d be open to taking on a leadership position</span>
+      </label>
 
       {status === 'error' && (
         <p className="volunteer__error" role="alert">
