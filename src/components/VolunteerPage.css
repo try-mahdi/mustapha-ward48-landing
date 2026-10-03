@@ -176,3 +176,53 @@
   color: var(--cream);
   margin-bottom: 0;
 }
+
+/* Leadership opt-in: a real checkbox (visually hidden but focusable and
+   announced) drawn as a brand-styled box. */
+.volunteer__checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--tap-min);
+  font: var(--weight-subhead) 16px/1.35 var(--font-subhead);
+  color: var(--purple);
+  cursor: pointer;
+}
+.volunteer__checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.volunteer__checkbox-box {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  border: var(--border-width) solid var(--purple);
+  border-radius: 6px;
+  background: var(--surface-card);
+  display: grid;
+  place-items: center;
+  transition: background var(--duration-fast) var(--ease);
+}
+.volunteer__checkbox:hover .volunteer__checkbox-box {
+  background: var(--purple-tint);
+}
+.volunteer__checkbox input:checked + .volunteer__checkbox-box {
+  background: var(--purple);
+}
+.volunteer__checkbox input:checked + .volunteer__checkbox-box::after {
+  content: '';
+  width: 6px;
+  height: 11px;
+  margin-top: -2px;
+  border: solid var(--cream);
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+.volunteer__checkbox input:focus-visible + .volunteer__checkbox-box {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
