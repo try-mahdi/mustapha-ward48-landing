@@ -37,8 +37,6 @@ async function saveEventSignUp(data, event) {
       lastName: data.lastName,
       phone: data.phone,
       email: data.email,
-      availability: data.availability,
-      frequency: data.frequency,
       event: `${event.title} (${event.when})`,
       website: data.hp_extra,
     }),
@@ -58,8 +56,8 @@ function sendViaEmailJS(data, event) {
       `Name: ${data.firstName} ${data.lastName}`,
       `WhatsApp / mobile: ${data.phone}`,
       `Email: ${data.email || '(not given)'}`,
-      `Usually available: ${data.availability}`,
-      `How often: ${data.frequency}`,
+      !event && `Usually available: ${data.availability}`,
+      !event && `How often: ${data.frequency}`,
       !event && `Open to a leadership position: ${data.leadership ? 'Yes' : 'No'}`,
     ]
       .filter(Boolean)
@@ -92,8 +90,9 @@ function RadioGroup({ legend, name, options }) {
 
 // Shared by the volunteer page and the event sign-up dialog, so both collect
 // the same details. Given an `event`, it's the event version: the sign-up
-// goes to the sheet tagged with that event, the leadership question is left
-// out and a note says training will be provided. `onSuccess` lets the
+// goes to the sheet tagged with that event, the availability, how-often and
+// leadership questions are left out (the event already answers when), and a
+// note says training will be provided. `onSuccess` lets the
 // surrounding dialog tidy itself up around the thank-you message.
 function VolunteerForm({ event = null, onSuccess }) {
   const formRef = useRef(null);
@@ -192,12 +191,16 @@ function VolunteerForm({ event = null, onSuccess }) {
         </label>
       </div>
 
-      <RadioGroup
-        legend="When are you usually available?"
-        name="availability"
-        options={AVAILABILITY}
-      />
-      <RadioGroup legend="How often can you volunteer?" name="frequency" options={FREQUENCY} />
+      {!event && (
+        <>
+          <RadioGroup
+            legend="When are you usually available?"
+            name="availability"
+            options={AVAILABILITY}
+          />
+          <RadioGroup legend="How often can you volunteer?" name="frequency" options={FREQUENCY} />
+        </>
+      )}
 
       {event ? (
         <p className="volunteer__training">

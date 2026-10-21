@@ -22,8 +22,6 @@ const HEADERS = [
   'Surname',
   'WhatsApp / mobile',
   'Email',
-  'Usually available',
-  'How often',
   'Event',
 ];
 
@@ -53,12 +51,10 @@ function doPost(e) {
     lastName: clean('lastName'),
     phone: clean('phone'),
     email: clean('email'),
-    availability: clean('availability'),
-    frequency: clean('frequency'),
     event: clean('event'),
   };
 
-  if (!row.firstName || !row.lastName || !row.phone || !row.availability || !row.frequency || !row.event) {
+  if (!row.firstName || !row.lastName || !row.phone || !row.event) {
     return respond({ ok: false, error: 'missing-fields' });
   }
 
@@ -73,8 +69,6 @@ function doPost(e) {
       row.lastName,
       row.phone,
       row.email,
-      row.availability,
-      row.frequency,
       row.event,
     ]);
   } finally {
@@ -130,8 +124,6 @@ function notify(row) {
     `Name: ${name}`,
     `WhatsApp / mobile: ${plain(row.phone)}`,
     `Email: ${plain(row.email) || '(not given)'}`,
-    `Usually available: ${plain(row.availability)}`,
-    `How often: ${plain(row.frequency)}`,
   ];
   lines.push('', `All sign-ups: ${SpreadsheetApp.getActiveSpreadsheet().getUrl()}`);
 
