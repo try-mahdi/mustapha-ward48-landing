@@ -30,6 +30,7 @@ jobs:
           VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
           VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
           VITE_DONATION_CHECKOUT_URL: ${{ secrets.VITE_DONATION_CHECKOUT_URL }}
+          VITE_VOLUNTEER_SHEET_URL: ${{ secrets.VITE_VOLUNTEER_SHEET_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

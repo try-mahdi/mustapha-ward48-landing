@@ -15,12 +15,13 @@ The contact form sends via EmailJS and needs a few `VITE_EMAILJS_*` values
 in a local `.env.local` file (gitignored) and as GitHub Actions repo secrets
 for deploys. Ask the maintainer for the values.
 
-The volunteer form (`/volunteer`) currently sends through the contact form's
-same EmailJS template, so it needs nothing extra: sign-ups arrive in the
-contact inbox with a message starting "VOLUNTEER SIGN-UP" that lists the
-area, availability and how often they can help. A dedicated volunteer
-template and an automated thank-you email (with the volunteers' WhatsApp
-group link) are planned for later.
+The volunteer form on `/volunteer` sends through the contact form's same
+EmailJS template, so it needs nothing extra: sign-ups arrive in the contact
+inbox with a message starting "VOLUNTEER SIGN-UP". The sign-up form on each
+event instead saves to a Google Sheet and emails the team — see
+[Event sign-ups](#event-sign-ups) (until `VITE_VOLUNTEER_SHEET_URL` is set,
+those go through EmailJS too). Volunteers who give an email address get a
+thank-you email (with the WhatsApp group link) via EmailJS either way.
 
 Note: WhatsApp's Business Messaging Policy bars political candidates and
 campaigns from the WhatsApp Business Platform (the automated API), so
@@ -106,6 +107,57 @@ verifies Yoco's signature rather than trusting the redirect alone.
   instead of through the site — CORS only restricts browser-based
   cross-site calls. The amount bounds and rate limit are what actually
   bound the damage from that, not CORS.
+
+## Volunteer events
+
+The events list on `/volunteer` comes from `src/data/volunteerEvents.js`.
+To add, change or remove an event, edit that list and redeploy. Dates are
+`YYYY-MM-DD` and times 24-hour `HH:MM`; `end` is optional. Events are shown
+soonest-first and drop off automatically once their day has passed.
+
+## Event sign-ups
+
+Each sign-up from an event's pop-up form is added as a row to a `Volunteers` tab in a Google Sheet, and
+the team gets a "New volunteer: <name>" email, both done by a small Apps
+Script (`google-apps-script/volunteer-signups.gs`) that runs inside the
+sheet under the owner's Google account. The site only knows the script's
+public URL; it can add sign-ups but can't read the sheet.
+
+**One-time setup** (signed in as the account that should own the data and
+send the emails):
+
+1. Create a Google Sheet (or use an existing one). **Keep it private**: it
+   holds volunteers' names and phone numbers, so share it only with the
+   people who need it, never "Anyone with the link" (POPIA applies).
+2. In the sheet: **Extensions → Apps Script**. Replace the contents of
+   `Code.gs` with `google-apps-script/volunteer-signups.gs` and save.
+3. **Project Settings (⚙) → Script properties → Add**: `NOTIFY_EMAIL` =
+   the address that should get the heads-up (comma-separate for several).
+4. **Deploy → New deployment → Select type: Web app**.
+   - Execute as: **Me**
+   - Who has access: **Anyone**
+
+   Click Deploy, approve the permissions prompt (Google warns the app is
+   unverified because it's your own script: **Advanced → Go to … (unsafe)**),
+   and copy the **Web app URL** (ends in `/exec`).
+5. Set it in `.env.local` for local dev and as a GitHub Actions repo secret
+   for deploys, then redeploy the site:
+
+   ```
+   VITE_VOLUNTEER_SHEET_URL=https://script.google.com/macros/s/…/exec
+   ```
+
+The `Volunteers` tab and its header row are created on the first sign-up.
+
+**After editing the script**, publish the change with **Deploy → Manage
+deployments → ✏️ Edit → Version: New version → Deploy**. That keeps the
+same URL. "New deployment" makes a new URL, and the site would keep using
+the old one.
+
+**Limits:** a free Google account can send about 100 emails a day, and the
+script accepts at most 20 sign-ups per 10 minutes overall, to stop someone
+flooding the sheet through the public URL. Sign-ups are still saved if the
+email fails.
 
 ## License
 

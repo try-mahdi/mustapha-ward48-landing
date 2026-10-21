@@ -1,0 +1,291 @@
+.vol-events {
+  background: var(--surface-raised);
+  padding-block: var(--section-y);
+}
+
+.vol-events__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.vol-events__heading {
+  margin: 0 0 var(--space-3);
+}
+
+.vol-events__lead {
+  margin: 0;
+  max-width: 48ch;
+  color: var(--text-muted);
+}
+
+.vol-events__status {
+  margin: 0 0 var(--space-2);
+  color: var(--text-muted);
+}
+
+.vol-events__nav {
+  display: flex;
+  flex: none;
+  gap: var(--space-2);
+}
+/* The arrows duplicate what swiping already does, so they're the first thing
+   to go when the heading needs the width. */
+@media (max-width: 639px) {
+  .vol-events__nav {
+    display: none;
+  }
+}
+
+/* Cards run past the container's gutter and scroll back, so a partly visible
+   next card signals there's more to the right. A mask fades each edge of the
+   track to the section background instead of cutting a card off sharply —
+   `data-fade-start`/`data-fade-end` (set from scroll position in JS) turn a
+   side off once there's nothing left to reveal there. */
+/* `position: relative` makes the track the containing block for absolutely
+   positioned descendants (the buttons' sr-only labels), so its overflow
+   clips them too. Without it they escape the scroller, sit wherever their
+   card is scrolled to, and widen the whole page on phones. */
+.vol-events__track {
+  position: relative;
+  --fade-w: clamp(14px, 3vw, 32px);
+  /* The edge mask floors out at this opacity rather than 0 — a soft
+     softening of the last card instead of it visibly vanishing. */
+  --fade-edge: rgba(0, 0, 0, 0.55);
+  display: flex;
+  gap: var(--space-6);
+  list-style: none;
+  margin: 0 calc(-1 * var(--gutter));
+  padding: var(--space-1) var(--gutter) var(--space-4);
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  /* Hidden at rest; the --scrolling class (toggled while a scroll gesture
+     is in flight) switches this to `thin` so it only appears on scroll. */
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    var(--fade-edge),
+    black var(--fade-w),
+    black calc(100% - var(--fade-w)),
+    var(--fade-edge)
+  );
+  mask-image: linear-gradient(
+    to right,
+    var(--fade-edge),
+    black var(--fade-w),
+    black calc(100% - var(--fade-w)),
+    var(--fade-edge)
+  );
+}
+.vol-events__track[data-fade-start='false'] {
+  -webkit-mask-image: linear-gradient(to right, black, black calc(100% - var(--fade-w)), var(--fade-edge));
+  mask-image: linear-gradient(to right, black, black calc(100% - var(--fade-w)), var(--fade-edge));
+}
+.vol-events__track[data-fade-end='false'] {
+  -webkit-mask-image: linear-gradient(to right, var(--fade-edge), black var(--fade-w), black);
+  mask-image: linear-gradient(to right, var(--fade-edge), black var(--fade-w), black);
+}
+.vol-events__track[data-fade-start='false'][data-fade-end='false'] {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.vol-events__track::-webkit-scrollbar {
+  height: 10px;
+}
+.vol-events__track::-webkit-scrollbar-track {
+  background: transparent;
+}
+.vol-events__track::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+.vol-events__track--scrolling {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+.vol-events__track--scrolling::-webkit-scrollbar-thumb {
+  background-color: var(--gold);
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.vol-events__track--scrolling::-webkit-scrollbar-thumb:hover {
+  background-color: var(--gold-deep);
+}
+
+.vol-events__item {
+  display: flex;
+  flex: 0 0 clamp(260px, 76vw, 320px);
+  scroll-snap-align: start;
+}
+
+.vol-events__card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  background: var(--surface-card);
+  border: var(--border-card);
+  border-radius: var(--radius-lg);
+}
+
+.vol-events__band {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+  background: var(--purple);
+  border-bottom: var(--border-card);
+}
+
+.vol-events__band-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  place-items: center;
+  height: 100%;
+  padding: var(--space-3);
+  gap: var(--space-2);
+}
+
+.vol-events__band-grid img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.vol-events__band-grid img:nth-child(3n) {
+  transform: rotate(-16deg);
+}
+.vol-events__band-grid img:nth-child(3n + 1) {
+  transform: rotate(13deg);
+}
+.vol-events__band-grid img:nth-child(4n) {
+  transform: rotate(-30deg);
+}
+
+.vol-events__tag {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  margin: 0;
+  padding: 4px 12px;
+  background: var(--surface-card);
+  color: var(--purple);
+  border-radius: var(--radius-pill);
+  font: var(--weight-body-bold) var(--type-caption) / 1.4 var(--font-body);
+}
+
+.vol-events__body {
+  flex: 1;
+  padding: var(--space-6) var(--space-6) 0;
+}
+
+.vol-events__badge {
+  display: inline-block;
+  margin: 0 0 var(--space-3);
+  padding: 4px 12px;
+  background: var(--surface-accent-soft);
+  color: var(--purple);
+  border-radius: var(--radius-pill);
+  font: var(--weight-body-bold) var(--type-caption) / 1.4 var(--font-body);
+}
+
+.vol-events__when {
+  margin: 0 0 var(--space-2);
+  font: var(--weight-body-bold) var(--type-caption) / 1.4 var(--font-body);
+  color: var(--text-body);
+}
+
+.vol-events__title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--type-h4);
+}
+
+.vol-events__where {
+  margin: 0;
+  font-size: var(--type-caption);
+  color: var(--text-muted);
+}
+
+.vol-events__foot {
+  padding: var(--space-6);
+}
+
+.vol-events__dialog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.vol-events__dialog-meta {
+  margin: 0;
+  font: var(--weight-body-bold) var(--type-caption) / 1.4 var(--font-body);
+  color: var(--purple);
+}
+
+/* Coming-soon ("locked") cards. The icon band loses its colour behind a
+   padlock medallion that gives a little rattle every few seconds, like a
+   locked level in a game; the rest of the card steps back to muted. */
+.vol-events__card--locked {
+  background: var(--surface-raised);
+  border-style: dashed;
+}
+.vol-events__card--locked .vol-events__band-grid {
+  filter: grayscale(1);
+  opacity: 0.35;
+}
+.vol-events__card--locked .vol-events__title,
+.vol-events__card--locked .vol-events__when {
+  color: var(--text-muted);
+}
+
+.vol-events__lock {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--purple);
+  border: 3px solid var(--surface-card);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  animation: vol-events-rattle 4s ease-in-out infinite;
+}
+@keyframes vol-events-rattle {
+  0%,
+  86%,
+  100% {
+    transform: rotate(0);
+  }
+  89% {
+    transform: rotate(-12deg);
+  }
+  92% {
+    transform: rotate(10deg);
+  }
+  95% {
+    transform: rotate(-6deg);
+  }
+  98% {
+    transform: rotate(3deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vol-events__lock {
+    animation: none;
+  }
+}
+
+.vol-events__badge--locked {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--purple);
+  color: var(--surface-card);
+}
