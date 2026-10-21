@@ -42,14 +42,14 @@ export const VOLUNTEER_EVENTS = [
   },
   {
     id: 'coming-soon-2',
-    title: 'Canvassing in ... Estate',
-    location: '... Estate, Athlone',
+    title: 'Canvassing in ...',
+    location: '..., Athlone',
     comingSoon: true,
   },
   {
     id: 'coming-soon-3',
-    title: 'Canvassing in ... Estate',
-    location: '... Estate, Athlone',
+    title: 'Canvassing in ...',
+    location: '..., Athlone',
     comingSoon: true,
   },
   {
