@@ -32,6 +32,8 @@ function VolunteerPage() {
         </div>
       </section>
 
+      <VolunteerEvents />
+
       <section className="volunteer" aria-label="Volunteer sign-up form">
         <IconPattern />
         <div className="volunteer__inner">
@@ -40,8 +42,6 @@ function VolunteerPage() {
           </div>
         </div>
       </section>
-
-      <VolunteerEvents />
     </>
   );
 }
