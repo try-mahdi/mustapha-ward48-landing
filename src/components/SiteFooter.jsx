@@ -146,6 +146,10 @@ function SiteFooter() {
         developed by{' '}
         <a href="https://mahdidavids.com" target="_blank" rel="noopener noreferrer">
           mahdidavids.com
+        </a>{' '}
+        &amp;{' '}
+        <a href="https://maarijbhai.github.io/" target="_blank" rel="noopener noreferrer">
+          maarijbhai.github.io
         </a>
       </p>
     </footer>

@@ -28,7 +28,7 @@ export const VOLUNTEER_EVENTS = [
   {
     id: 'belgravia-canvassing',
     title: 'Canvassing in Belgravia',
-    blurb: 'Meeting place to be announced.',
+    blurb: 'Meet at the College of Cape Town, Kromboom Road.',
     location: 'Belgravia, Athlone',
     online: false,
     date: '2026-10-29',
