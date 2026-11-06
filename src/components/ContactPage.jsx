@@ -21,7 +21,7 @@ function ContactPage() {
         <div className="contact-hero__scrim" aria-hidden="true" />
         <div className="contact-hero__content">
           <h1 id="contact-heading" className="contact-page__title">
-            Keeping the Conversation Going
+            Keep the Conversation Going
           </h1>
         </div>
       </section>

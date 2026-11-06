@@ -99,7 +99,7 @@ function MeetThaafir() {
 
         <div className="meet-thaafir__column">
           <h2 id="meet-thaafir-cta-heading" className="meet-thaafir__heading">
-            Keep the conversation going
+            Keep the Conversation Going
           </h2>
 
           <div className="meet-thaafir__contact">
