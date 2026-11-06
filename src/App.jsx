@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import SiteHeader from './components/SiteHeader.jsx';
 import Hero from './components/Hero.jsx';
 import BallotBoxMessage from './components/BallotBoxMessage.jsx';
@@ -7,7 +7,7 @@ import AboutBlurb from './components/AboutBlurb.jsx';
 import ActionSection from './components/ActionSection.jsx';
 import ThePlan from './components/ThePlan.jsx';
 import MeetThaafir from './components/MeetThaafir.jsx';
-import VolunteerPage from './components/VolunteerPage.jsx';
+import ContactPage from './components/ContactPage.jsx';
 import SiteFooter from './components/SiteFooter.jsx';
 import ContactDialog from './components/ContactDialog.jsx';
 import './App.css';
@@ -59,7 +59,9 @@ function App() {
             path="/meet-thaafir"
             element={<MeetThaafir />}
           />
-          <Route path="/volunteer" element={<VolunteerPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          {/* The volunteer page became the contact page after the election. */}
+          <Route path="/volunteer" element={<Navigate to="/contact" replace />} />
         </Routes>
       </main>
 

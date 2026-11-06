@@ -3,7 +3,7 @@ import Icon from './Icon.jsx';
 import './GetInvolved.css';
 
 const LINKS = [
-  { key: 'volunteer', icon: 'users', label: 'Volunteer', to: '/volunteer' },
+  { key: 'contact', icon: 'mail', label: 'Contact us', to: '/contact' },
 ];
 
 function GetInvolved() {
