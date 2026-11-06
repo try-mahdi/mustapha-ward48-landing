@@ -3,11 +3,10 @@ import Icon from './Icon.jsx';
 import './GetInvolved.css';
 
 const LINKS = [
-  { key: 'donate', icon: 'heart-handshake', label: 'Donate', action: 'donate' },
   { key: 'volunteer', icon: 'users', label: 'Volunteer', to: '/volunteer' },
 ];
 
-function GetInvolved({ onDonateClick }) {
+function GetInvolved() {
   return (
     <div className="get-involved">
       <p className="get-involved__eyebrow">Take action</p>
@@ -21,16 +20,6 @@ function GetInvolved({ onDonateClick }) {
               <Icon name="arrow-right" size={18} color="var(--purple)" />
             </>
           );
-
-          if (item.action === 'donate') {
-            return (
-              <li key={item.key}>
-                <button type="button" className="get-involved__link" onClick={onDonateClick}>
-                  {content}
-                </button>
-              </li>
-            );
-          }
 
           return (
             <li key={item.key}>

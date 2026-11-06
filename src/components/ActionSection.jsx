@@ -1,12 +1,10 @@
-import ElectionCountdown from './ElectionCountdown.jsx';
 import GetInvolved from './GetInvolved.jsx';
 import './ActionSection.css';
 
-function ActionSection({ onDonateClick }) {
+function ActionSection() {
   return (
     <div className="action-section">
-      <ElectionCountdown />
-      <GetInvolved onDonateClick={onDonateClick} />
+      <GetInvolved />
     </div>
   );
 }

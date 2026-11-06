@@ -1,6 +1,5 @@
 import heroCollage from '../assets/meet-hero-collage.webp';
 import rootsCollage from '../assets/meet-roots-collage.webp';
-import suitPhoto from '../assets/about-headshot.jpg';
 import IconPattern from './IconPattern.jsx';
 import { ContactForm } from './ContactDialog.jsx';
 import './MeetThaafir.css';
@@ -100,29 +99,10 @@ function MeetThaafir() {
 
         <div className="meet-thaafir__column">
           <h2 id="meet-thaafir-cta-heading" className="meet-thaafir__heading">
-            Running for <br />
-            ward councillor
+            Keep the conversation going
           </h2>
 
-          <div className="meet-thaafir__cta-photo">
-            <img src={suitPhoto} alt="Thaafir in a navy suit" />
-          </div>
-
-          <div className="meet-thaafir__copy">
-            <p>
-              This community deserves to be represented by one of its own residents, someone who
-              will experience its joys and its pains with you. For far too long, we&rsquo;ve
-              waited on political parties to deliver change for our community and for this city.
-              It&rsquo;s time for us to focus on fighting for{' '}
-              <strong>safer streets, stronger community,</strong> and{' '}
-              <strong>Athlone first.</strong>
-            </p>
-          </div>
-
-          <div className="meet-thaafir__contact" aria-labelledby="meet-thaafir-contact-heading">
-            <h3 id="meet-thaafir-contact-heading" className="meet-thaafir__contact-title">
-              Let&rsquo;s talk
-            </h3>
+          <div className="meet-thaafir__contact">
             <ContactForm />
           </div>
         </div>
