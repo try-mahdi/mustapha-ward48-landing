@@ -7,7 +7,7 @@ const PAGES = [
   { key: 'home', to: '/', label: 'Home' },
   { key: 'plan', to: '/the-plan', label: 'The Plan' },
   { key: 'about', to: '/meet-thaafir', label: 'Meet Thaafir' },
-  { key: 'volunteer', to: '/volunteer', label: 'Volunteer' },
+  { key: 'contact', to: '/contact', label: 'Contact' },
   { key: 'report', label: 'Report a problem', disabled: true },
 ];
 

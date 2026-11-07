@@ -1,0 +1,47 @@
+.ballot-box {
+  background: var(--purple);
+  color: var(--cream);
+  padding: var(--section-y) var(--gutter);
+}
+
+.ballot-box__inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Orange-gold with a cream outline, as in the Canva design (the same orange
+   as the "48" in the M48 logo). paint-order keeps the stroke outside the
+   letters so it doesn't thin them. */
+.ballot-box__title {
+  font-size: clamp(36px, 6.4vw, 76px);
+  line-height: 1;
+  text-transform: uppercase;
+  color: #e0972d;
+  -webkit-text-stroke: 0.07em var(--cream);
+  paint-order: stroke fill;
+  margin: 0 0 var(--space-12);
+}
+
+.ballot-box__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  font-family: var(--font-subhead);
+  font-weight: 400;
+  font-size: clamp(17px, 1.8vw, 22px);
+  line-height: 1.4;
+}
+.ballot-box__copy p {
+  margin: 0;
+}
+.ballot-box__copy strong {
+  font-weight: 700;
+  color: var(--white);
+}
+
+.ballot-box__signature {
+  display: block;
+  width: clamp(180px, 34vw, 320px);
+  height: auto;
+  margin: var(--space-8) 0 0 auto;
+}

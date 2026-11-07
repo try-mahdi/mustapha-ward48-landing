@@ -159,42 +159,12 @@
   margin-bottom: var(--space-8);
 }
 
-.meet-thaafir__cta-photo {
-  max-width: 480px;
-  margin: 0 auto var(--space-8);
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-  border: var(--border-width) solid var(--gold);
-}
-.meet-thaafir__cta-photo img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 648 / 854;
-  object-fit: cover;
-  object-position: center 14%;
-}
-
-.meet-thaafir__cta .meet-thaafir__copy {
-  color: var(--cream);
-}
-.meet-thaafir__cta .meet-thaafir__copy strong {
-  color: var(--cream);
-}
-
 .meet-thaafir__contact {
   max-width: 640px;
-  margin: var(--space-12) auto 0;
+  margin: 0 auto;
   padding: var(--card-pad);
   background: var(--cream);
   border: var(--border-width) solid var(--gold);
   border-radius: var(--radius-lg);
   text-align: left;
-}
-.meet-thaafir__contact-title {
-  font-family: var(--font-display);
-  font-size: var(--type-h3);
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--purple);
-  margin: 0 0 var(--space-2);
 }
